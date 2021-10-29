@@ -11,9 +11,9 @@
             {
                 @Html.HiddenFor(model => model.EditableCollege.CollegeID) 
                 <div class="input-group">
-                    @Html.TextBoxFor(model => model.EditableCollege.CollegeName, new { @class = "form-control" })
-                    @Html.TextBoxFor(model => model.EditableCollege.CollegeAbbv, new { @class = "form-control" })
-                    @Html.TextBoxFor(model => model.EditableCollege.CollegeCounty, new { @class = "form-control" })
+                    @Html.TextBoxFor(model => model.EditableCollege.CollegeName, new { @class = "form-control", placeholder="College Name" })
+                    @Html.TextBoxFor(model => model.EditableCollege.CollegeAbbv, new { @class = "form-control", placeholder = "College Abbreviation" })
+                    @Html.TextBoxFor(model => model.EditableCollege.CollegeCounty, new { @class = "form-control", placeholder = "College County" })
                     <div class="input-group-append">
                         <button type="submit" class="btn btn-success">@(Model.EditableCollege.CollegeID > 0 ? "Update" : "Add")</button>
                     </div>
