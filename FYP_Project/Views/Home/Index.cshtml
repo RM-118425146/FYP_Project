@@ -1,46 +1,88 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-@model FYP_Project.ViewModels.CollegeViewModel
+@section Banner{
+    <style>
+        body {
+            padding-top: 1em;
+        }
+    </style> <div class="container-fluid">
 
-<body style="margin: 20px">
-    <h1>Colleges</h1>
-    <table class="table table-striped table-bordered table-hover" style="max-width: 500px;">
-        <tr>
-            <td colspan="5">@using (var form = Html.BeginForm("CreateUpdate", "Home", FormMethod.Post))
-            {
-                @Html.HiddenFor(model => model.EditableCollege.CollegeID) 
-                <div class="input-group">
-                    @Html.TextBoxFor(model => model.EditableCollege.CollegeName, new { @class = "form-control", placeholder="College Name" })
-                    @Html.TextBoxFor(model => model.EditableCollege.CollegeAbbv, new { @class = "form-control", placeholder = "College Abbreviation" })
-                    @Html.TextBoxFor(model => model.EditableCollege.CollegeCounty, new { @class = "form-control", placeholder = "College County" })
-                    <div class="input-group-append">
-                        <button type="submit" class="btn btn-success">@(Model.EditableCollege.CollegeID > 0 ? "Update" : "Add")</button>
+        <div id="myCarousel" class="carousel slide bg-inverse w-75 ms-auto me-auto" data-bs-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-bs-target="#myCarousel" data-bs-slide-to="0" class="active"></li>
+                <li data-bs-target="#myCarousel" data-bs-slide-to="1"></li>
+                <li data-bs-target="#myCarousel" data-bs-slide-to="2"></li>
+                <li data-bs-target="#myCarousel" data-bs-slide-to="3"></li>
+            </ol>
+            <div class="carousel-inner" role="listbox">
+                <div class="carousel-item active">
+                    <img class="d-block w-100" src="~/img/Rocket-League.jpg" alt="First slide">
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100" src="~/img/league-of-legends.jpg" alt="Second slide">
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100" src="~/img/Valorant.jpg" alt="Third slide">
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100" src="~/img/csgo.jpg" alt="Fourth slide">
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#myCarousel" role="button" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#myCarousel" role="button" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </a>
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+}
+
+<section class="main-section alabaster" id="aboutUs">
+    <!--main-section alabaster-start-->
+    <div class="container">
+        <div class="row">
+            <figure class="col-lg-5 col-sm-4 wow fadeInLeft">
+                <img src="img/ireland.png" alt="">
+            </figure>
+            <div class="col-lg-7 col-sm-8 featured-work">
+                <h2>About Us</h2>
+                <P class="padding-b">Proin iaculis purus consequat sem cure digni ssim. Donec porttitora entum suscipit aenean rhoncus posuere odio in tincidunt. Proin iaculis purus consequat sem cure digni ssim. Donec porttitora entum suscipit.</P>
+                <div class="featured-box">
+                    <div class="featured-box-col1 wow fadeInRight delay-02s">
+                        <i class="fa-magic"></i>
+                    </div>
+                    <div class="featured-box-col2 wow fadeInRight delay-02s">
+                        <h3>Free to play</h3>
+                        <p>Proin iaculis purus consequat sem cure digni ssim. Donec porttitora entum suscipit aenean rhoncus posuere odio in tincidunt. </p>
                     </div>
                 </div>
-                @Html.ValidationSummary()
-            }
-            </td>
-        </tr>
-        @foreach(var college in Model.Colleges)
-            {
-                <tr>
-                    <td class="text-center">
-                        @college.CollegeName
-                    </td>
-                    <td class="text-center">
-                        @college.CollegeAbbv
-                    </td>
-                    <td class="text-center">
-                        @college.CollegeCounty
-                    </td>
-                    <td class="text-center">
-                        <a href="/Home/Edit/@college.CollegeID" onclick="return confirm('Are you sure you want to edit this college?');" class="btn btn-sm btn-success">Edit</a>
-                    </td>
-                    <td class="text-center">
-                        <a href="/Home/Delete/@college.CollegeID" onclick="return confirm('Are you sure tou want to delete this college?');" class="btn btn-sm btn-Danger">Delete</a>
-                    </td>
-                </tr>
-            }
-    </table>
-</body>
+                <div class="featured-box">
+                    <div class="featured-box-col1 wow fadeInRight delay-04s">
+                        <i class="fa-gift"></i>
+                    </div>
+                    <div class="featured-box-col2 wow fadeInRight delay-04s">
+                        <h3>Variety of games</h3>
+                        <p>Proin iaculis purus consequat sem cure digni ssim. Donec porttitora entum suscipit aenean rhoncus posuere odio in tincidunt. </p>
+                    </div>
+                </div>
+                <div class="featured-box">
+                    <div class="featured-box-col1 wow fadeInRight delay-06s">
+                        <i class="fa-dashboard"></i>
+                    </div>
+                    <div class="featured-box-col2 wow fadeInRight delay-06s">
+                        <h3>Open to all ranks</h3>
+                        <p>Proin iaculis purus consequat sem cure digni ssim. Donec porttitora entum suscipit aenean rhoncus posuere odio in tincidunt. </p>
+                    </div>
+                </div>
+                <a class="link animated fadeInUp delay-1s" asp-controller=DataDemo asp-action=Index>View DataBase</a>
+            </div>
+        </div>
+    </div>
+</section><!--main-section alabaster-end-->
