@@ -10,4 +10,10 @@
     <PackageReference Include="Microsoft.Data.SqlClient" Version="3.0.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Views\CSGO\" />
+    <Folder Include="Views\LeagueOfLegends\" />
+    <Folder Include="Views\Valorant\" />
+  </ItemGroup>
+
 </Project>

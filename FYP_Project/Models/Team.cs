@@ -20,5 +20,8 @@ namespace FYP_Project.Models
         public int GameID { get; set; }
 
         public int  CollegeID{ get; set; }
+
+        [Required]
+        public string ImageURL { get; set; }
 }
 }
