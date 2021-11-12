@@ -1,167 +1,191 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, maximum-scale=1">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Homepage</title>
-    <link rel="icon" href="~/favicon.png" type="image/png">
-    <link rel="shortcut icon" href="~/favicon.ico" type="img/x-icon">
+    <title>Collegiate Esports Ireland - @ViewData["Title"]</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
 
-    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,800italic,700italic,600italic,400italic,300italic,800,700,600' rel='stylesheet' type='text/css'>
+    <!-- Favicons -->
+    <link href="~/img/favicon.png" rel="icon">
+    <link href="~/img/apple-touch-icon.png" rel="apple-touch-icon">
 
-    <link href="~/css/bootstrap.css" rel="stylesheet" type="text/css">
-    <link href="~/css/style.css" rel="stylesheet" type="text/css">
-    <link href="~/css/font-awesome.css" rel="stylesheet" type="text/css">
-    <link href="~/css/responsive.css" rel="stylesheet" type="text/css">
-    <link href="~/css/animate.css" rel="stylesheet" type="text/css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
-    <!--Carousel code found here: https://www.quackit.com/html/html_editors/scratchpad/?example=/bootstrap/bootstrap_5/tutorial/bootstrap_5_carousel_captions -->
-    <link href="~/css/Carousel.css" rel="stylesheet" type="text/css">
+    <!-- Vendor CSS Files -->
+    <link href="~/vendor/animate.css/animate.min.css" rel="stylesheet">
+    <link href="~/vendor/aos/aos.css" rel="stylesheet">
+    <link href="~/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="~/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="~/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="~/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="~/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
-    <!--[if IE]><style type="text/css">.pie {behavior:url(PIE.htc);}</style><![endif]-->
+    <!-- Template Main CSS File -->
+    <link href="~/css/style.css" rel="stylesheet">
 
-    <script type="text/javascript" src="js/jquery.1.8.3.min.js"></script>
-    <script type="text/javascript" src="js/bootstrap.js"></script>
-    <script type="text/javascript" src="js/jquery-scrolltofixed.js"></script>
-    <script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
-    <script type="text/javascript" src="js/jquery.isotope.js"></script>
-    <script type="text/javascript" src="js/wow.js"></script>
-    <script type="text/javascript" src="js/classie.js"></script>
+    <!-- =======================================================
+    * Template Name: Company - v4.6.1
+    * Template URL: https://bootstrapmade.com/company-free-html-bootstrap-template/
+    * Author: BootstrapMade.com
+    * License: https://bootstrapmade.com/license/
+    ======================================================== -->
 
-
-    <!--[if lt IE 9]>
-        <script src="js/respond-1.1.0.min.js"></script>
-        <script src="js/html5shiv.js"></script>
-        <script src="js/html5element.js"></script>
-    <![endif]-->
-
-
+    <!-- CSS for table -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
+
 <body>
 
-    <nav class="main-nav-outer" id="test">
-        <!--main-nav-start-->
-        <div class="container">
-            <ul class="main-nav">
-                <li><a asp-controller=Home asp-action=Index>Home</a></li>
-                <li><a asp-controller=DataDemo asp-action=Index>Rocket League</a></li>
-                <li><a asp-controller=CSGO asp-action=Index>CS:GO</a></li>
-                <li class="small-logo"><a asp-controller=Home asp-action=Index><img src="~/img/small-logo.png" alt="" style="max-height:55px"></a></li>
-                <li><a asp-controller=Valorant asp-action=Index>Valorant</a></li>
-                <li><a asp-controller=LeagueOfLegends asp-action=Index>League of Legends</a></li>
-                <li><a asp-controller=RegisterTeam asp-action=Index>Register Team</a></li>
-            </ul>
-            <a class="res-nav_click" href="#"><i class="fa-bars"></i></a>
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top">
+        <div class="container d-flex align-items-center">
+
+            <!--<h1 class="logo me-auto"><a href="index.html"><span>Com</span>pany</a></h1>-->
+            <!-- Uncomment below if you prefer to use an image logo -->
+            <a asp-controller=Home asp-action=Index class="logo me-auto me-lg-0"><img src="~/img/small-logo-ICE.png" alt="" class="img-fluid"></a>
+
+            <nav id="navbar" class="navbar order-last order-lg-0">
+                <ul>
+                    <li><a asp-controller=Home asp-action=Index class="active">Home</a></li>
+
+                    <li class="dropdown">
+                        <a href="#"><span>Our Games</span> <i class="bi bi-chevron-down"></i></a>
+                        <ul>
+                            <li class="dropdown">
+                                <a asp-controller=DataDemo asp-action=Index><span>Rocket League</span> <i class="bi bi-chevron-right"></i></a>
+                                <ul>
+                                    <li><a href="#">Bracket</a></li>
+                                    <li><a href="#">Teams</a></li>
+                                    <li><a href="#">Upcoming Games</a></li>
+                                    <li><a href="#">Past Results</a></li>
+                                    <li><a href="#">Stats</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="team.html"><span>CS:GO</span> <i class="bi bi-chevron-right"></i></a>
+                                <ul>
+                                    <li><a href="#">Bracket</a></li>
+                                    <li><a href="#">Teams</a></li>
+                                    <li><a href="#">Upcoming Games</a></li>
+                                    <li><a href="#">Past Results</a></li>
+                                    <li><a href="#">Stats</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="testimonials.html"><span>League-of-Legends</span> <i class="bi bi-chevron-right"></i></a>
+                                <ul>
+                                    <li><a href="#">Bracket</a></li>
+                                    <li><a href="#">Teams</a></li>
+                                    <li><a href="#">Upcoming Games</a></li>
+                                    <li><a href="#">Past Results</a></li>
+                                    <li><a href="#">Stats</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#"><span>Valorant</span> <i class="bi bi-chevron-right"></i></a>
+                                <ul>
+                                    <li><a href="#">Bracket</a></li>
+                                    <li><a href="#">Teams</a></li>
+                                    <li><a href="#">Upcoming Games</a></li>
+                                    <li><a href="#">Past Results</a></li>
+                                    <li><a href="#">Stats</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li><a href="services.html">Watch Live</a></li>
+                    <li><a href="portfolio.html">Challengermode</a></li>
+                    <li><a href="pricing.html">Register</a></li>
+                    <li><a href="blog.html">Contact Us</a></li>
+
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav><!-- .navbar -->
+
         </div>
-    </nav><!--main-nav-end-->
+    </header><!-- End Header -->
 
-    @RenderSection("Banner", required: false)
-    @RenderBody()
+        @RenderSection("Banner", required: false)
+        @RenderBody()
 
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-logo"><a href="#"><img src="~/img/footer-logo.png" alt=""></a></div>
-            <span class="copyright">Copyright © 2015 | <a href="http://bootstraptaste.com/">Bootstrap Themes</a> by BootstrapTaste</span>
-        </div>
-        <!--
-            All links in the footer should remain intact.
-            Licenseing information is available at: http://bootstraptaste.com/license/
-            You can buy this theme without footer links online at: http://bootstraptaste.com/buy/?theme=Knight
-        -->
-    </footer>
+        <!-- ======= Footer ======= -->
+        <footer id="footer">
 
+            <div class="footer-top">
+                <div class="container">
+                    <div class="row">
 
-    <script type="text/javascript">
-        $(document).ready(function (e) {
-            $('#test').scrollToFixed();
-            $('.res-nav_click').click(function () {
-                $('.main-nav').slideToggle();
-                return false
+                        <div class="col-lg-3 col-md-6 footer-contact">
+                            <h3>Company</h3>
+                            <p>
+                                A108 Adam Street <br>
+                                New York, NY 535022<br>
+                                United States <br><br>
+                                <strong>Phone:</strong> +1 5589 55488 55<br>
+                                <strong>Email:</strong> info@example.com<br>
+                            </p>
+                        </div>
 
-            });
+                        <div class="col-lg-2 col-md-6 footer-links">
+                            <h4>Useful Links</h4>
+                            <ul>
+                                <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
+                                <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
+                                <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
+                                <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
+                                <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+                            </ul>
+                        </div>
 
-        });
-    </script>
+                    </div>
+                </div>
+            </div>
 
-    <script>
-        wow = new WOW(
-            {
-                animateClass: 'animated',
-                offset: 100
-            }
-        );
-        wow.init();
+            <div class="container d-md-flex py-4">
 
-    </script>
+                <div class="me-md-auto text-center text-md-start">
+                    <div class="copyright">
+                        &copy; Copyright <strong><span>Company</span></strong>. All Rights Reserved
+                    </div>
+                    <div class="credits">
+                        <!-- All the links in the footer should remain intact. -->
+                        <!-- You can delete the links only if you purchased the pro version. -->
+                        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+                        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/company-free-html-bootstrap-template/ -->
+                        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+                    </div>
+                </div>
+                <div class="social-links text-center text-md-right pt-3 pt-md-0">
+                    <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+                    <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+                    <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+                    <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+                    <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+                </div>
+            </div>
+        </footer><!-- End Footer -->
 
+        <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-    <script type="text/javascript">
-        $(window).load(function () {
+        <!-- Vendor JS Files -->
+        <script src="~/vendor/aos/aos.js"></script>
+        <script src="~/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="~/vendor/glightbox/js/glightbox.min.js"></script>
+        <script src="~/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+        <script src="~/vendor/php-email-form/validate.js"></script>
+        <script src="~/vendor/swiper/swiper-bundle.min.js"></script>
+        <script src="~/vendor/waypoints/noframework.waypoints.js"></script>
 
-            $('.main-nav li a').bind('click', function (event) {
-                var $anchor = $(this);
+        <!-- Template Main JS File -->
+        <script src="~/js/main.js"></script>
 
-                $('html, body').stop().animate({
-                    scrollTop: $($anchor.attr('href')).offset().top - 102
-                }, 1500, 'easeInOutExpo');
-                /*
-                if you don't want to use the easing effects:
-                $('html, body').stop().animate({
-                    scrollTop: $($anchor.attr('href')).offset().top
-                }, 1000);
-                */
-                event.preventDefault();
-            });
-        })
-    </script>
-
-    <script type="text/javascript">
-
-        $(window).load(function () {
-
-
-            var $container = $('.portfolioContainer'),
-                $body = $('body'),
-                colW = 375,
-                columns = null;
-
-
-            $container.isotope({
-                // disable window resizing
-                resizable: true,
-                masonry: {
-                    columnWidth: colW
-                }
-            });
-
-            $(window).smartresize(function () {
-                // check if columns has changed
-                var currentColumns = Math.floor(($body.width() - 30) / colW);
-                if (currentColumns !== columns) {
-                    // set new column count
-                    columns = currentColumns;
-                    // apply width to container manually, then trigger relayout
-                    $container.width(columns * colW)
-                        .isotope('reLayout');
-                }
-
-            }).smartresize(); // trigger resize to set container width
-            $('.portfolioFilter a').click(function () {
-                $('.portfolioFilter .current').removeClass('current');
-                $(this).addClass('current');
-
-                var selector = $(this).attr('data-filter');
-                $container.isotope({
-
-                    filter: selector,
-                });
-                return false;
-            });
-
-        });
-
-    </script>
 </body>
+
 </html>
