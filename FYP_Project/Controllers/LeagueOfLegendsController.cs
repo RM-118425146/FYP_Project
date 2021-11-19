@@ -3,14 +3,16 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using FYP_Project.ViewModels;
 
 namespace FYP_Project.Controllers
 {
     public class LeagueOfLegendsController : Controller
     {
-        public IActionResult Index()
+        public IActionResult Teams()
         {
-            return View();
+            TeamViewModel viewModel = new TeamViewModel();
+            return View("Teams", viewModel);
         }
     }
 }

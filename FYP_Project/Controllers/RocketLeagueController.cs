@@ -9,10 +9,15 @@ namespace FYP_Project.Controllers
 {
     public class RocketLeagueController : Controller
     {
-        public IActionResult Index()
+        public IActionResult Teams()
         {
             TeamViewModel viewModel = new TeamViewModel();
-            return View(viewModel);
+            return View("Teams",viewModel);
+        }
+
+        public IActionResult Bracket()
+        {
+            return View("Bracket");
         }
     }
 }

@@ -9,8 +9,12 @@
 
             @foreach (var team in Model.Teams)
             {
-                @if (team.GameID == 0)
+                @if (team.GameID == 3)
                 {
+                    if (team.ImageURL == null)
+                    {
+                        team.ImageURL = "csgo_logo.png";
+                    }
                     <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
                         <div class="icon-box iconbox-blue">
                             <div class="icon">
@@ -22,6 +26,13 @@
                                 if (game.GameID == team.GameID)
                                 {
                                     <p>@game.GameName</p>
+                                }
+                            }
+                            @foreach (var college in Model.Colleges)
+                            {
+                                if (college.CollegeID == team.CollegeID)
+                                {
+                                    <p>@college.CollegeName</p>
                                 }
                             }
                         </div>

@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Collegiate Esports Ireland - @ViewData["Title"]</title>
+    <title>Legion Collegiate - @ViewData["Title"]</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -35,9 +35,13 @@
     * Author: BootstrapMade.com
     * License: https://bootstrapmade.com/license/
     ======================================================== -->
-
+    
     <!-- CSS for table -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!--CSS for Tournament Bracket source:https://codepen.io/jimmyhayek/embed/yJkdEB?height=563&theme-id=178&slug-hash=yJkdEB&default-tab=result&user=jimmyhayek&embed-version=2&pen-title=Responsive%20Tournament%20Bracket&name=cp_embed_5#result-box-->
+    <link href="~/css/Bracket.less" rel="stylesheet/less">
+    <script src="http://lesscss.googlecode.com/files/less-1.3.0.min.js"></script>
 </head>
 
 <body>
@@ -60,8 +64,8 @@
                             <li class="dropdown">
                                 <a asp-controller=DataDemo asp-action=Index><span>Rocket League</span> <i class="bi bi-chevron-right"></i></a>
                                 <ul>
-                                    <li><a asp-controller=RocketLeague asp-action=Index>Bracket</a></li>
-                                    <li><a asp-controller=RocketLeague asp-action=Index>Teams</a></li>
+                                    <li><a asp-controller=RocketLeague asp-action=Bracket>Bracket</a></li>
+                                    <li><a asp-controller=RocketLeague asp-action=Teams>Teams</a></li>
                                     <li><a href="#">Upcoming Games</a></li>
                                     <li><a href="#">Past Results</a></li>
                                     <li><a href="#">Stats</a></li>
@@ -71,7 +75,7 @@
                                 <a href="team.html"><span>CS:GO</span> <i class="bi bi-chevron-right"></i></a>
                                 <ul>
                                     <li><a href="#">Bracket</a></li>
-                                    <li><a href="#">Teams</a></li>
+                                    <li><a asp-controller=CSGO asp-action=Teams>Teams</a></li>
                                     <li><a href="#">Upcoming Games</a></li>
                                     <li><a href="#">Past Results</a></li>
                                     <li><a href="#">Stats</a></li>
@@ -81,7 +85,7 @@
                                 <a href="testimonials.html"><span>League-of-Legends</span> <i class="bi bi-chevron-right"></i></a>
                                 <ul>
                                     <li><a href="#">Bracket</a></li>
-                                    <li><a href="#">Teams</a></li>
+                                    <li><a asp-controller=LeagueOfLegends asp-action=Teams>Teams</a></li>
                                     <li><a href="#">Upcoming Games</a></li>
                                     <li><a href="#">Past Results</a></li>
                                     <li><a href="#">Stats</a></li>
@@ -91,7 +95,7 @@
                                 <a href="#"><span>Valorant</span> <i class="bi bi-chevron-right"></i></a>
                                 <ul>
                                     <li><a href="#">Bracket</a></li>
-                                    <li><a href="#">Teams</a></li>
+                                    <li><a asp-controller=Valorant asp-action=Teams>Teams</a></li>
                                     <li><a href="#">Upcoming Games</a></li>
                                     <li><a href="#">Past Results</a></li>
                                     <li><a href="#">Stats</a></li>
@@ -102,6 +106,7 @@
 
                     <li><a href="services.html">Watch Live</a></li>
                     <li><a href="portfolio.html">Challengermode</a></li>
+                    <li><a href="portfolio.html">About Us</a></li>
                     <li><a href="pricing.html">Register</a></li>
                     <li><a href="blog.html">Contact Us</a></li>
 
@@ -111,6 +116,10 @@
 
         </div>
     </header><!-- End Header -->
+
+    <br />
+    <br />
+    <br />
 
         @RenderSection("Banner", required: false)
         @RenderBody()
