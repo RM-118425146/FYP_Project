@@ -36,7 +36,7 @@
     * License: https://bootstrapmade.com/license/
     ======================================================== -->
     
-    <!-- CSS for table -->
+    <!-- CSS for table from lecture notes-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <!--CSS for Tournament Bracket source:https://codepen.io/jimmyhayek/embed/yJkdEB?height=563&theme-id=178&slug-hash=yJkdEB&default-tab=result&user=jimmyhayek&embed-version=2&pen-title=Responsive%20Tournament%20Bracket&name=cp_embed_5#result-box-->
@@ -62,7 +62,7 @@
                         <a href="#"><span>Our Games</span> <i class="bi bi-chevron-down"></i></a>
                         <ul>
                             <li class="dropdown">
-                                <a asp-controller=DataDemo asp-action=Index><span>Rocket League</span> <i class="bi bi-chevron-right"></i></a>
+                                <a asp-controller=RocketLeague asp-action=Index><span>Rocket League</span> <i class="bi bi-chevron-right"></i></a>
                                 <ul>
                                     <li><a asp-controller=RocketLeague asp-action=Bracket>Bracket</a></li>
                                     <li><a asp-controller=RocketLeague asp-action=Teams>Teams</a></li>
@@ -105,13 +105,14 @@
                     </li>
 
                     <li><a asp-controller=Watch asp-action=Index>Watch Live</a></li>
-                    <li><a href=#>Challengermode</a></li>
+                    <li><a href="https://www.challengermode.com/s/LegionCollegiate" >Challengermode</a></li>
                     <li><a href=#>About Us</a></li>
                     <li><a href=#>Register</a></li>
                     <li><a href=#>Contact Us</a></li>
 
                 </ul>
-                <i class="bi bi-list mobile-nav-toggle"></i>
+                <i class="bi bi-list mobile-nav-toggle">
+                </i>
             </nav><!-- .navbar -->
 
         </div>

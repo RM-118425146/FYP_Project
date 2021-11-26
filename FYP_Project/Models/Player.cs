@@ -14,6 +14,9 @@ namespace FYP_Project.Models
         public int PlayerID { get; set; }
 
         [Required]
+        public string GamerTag { get; set; }
+
+        [Required]
         [MinLength(2, ErrorMessage = "First name must be longer than 2 characters!")]
         [MaxLength(30, ErrorMessage = "First name must be shorter than 30 characters!")]
         public string PlayerFirstName { get; set; }
@@ -34,5 +37,7 @@ namespace FYP_Project.Models
         public int  PlayerTelephone { get; set; }
 
         public int TeamID { get; set; }
+
+        public string? TwitchName { get; set; }
     }
 }
