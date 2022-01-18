@@ -1,0 +1,71 @@
+﻿@{
+    ViewData["Title"] = "Players";
+}
+@model FYP_Project.ViewModels.TeamViewModel
+
+<section id="team" class="team section-bg">
+    <div class="container">
+
+        <div class="section-title" data-aos="fade-up">
+            <h2>@Model.EditableTeam.TeamName</h2>
+            <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+        </div>
+
+        <div class="row">
+            @foreach (var player in Model.Players)
+            {
+                if (player.TeamID == Model.EditableTeam.TeamID)
+                {
+                    <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+                        <div class="member" data-aos="fade-up">
+                            <div class="member-img">
+                                <img src="~/img/csgo_logo.png" class="img-fluid" alt="">
+                            </div>
+                            <div class="member-info">
+                                <h4>@player.GamerTag</h4>
+                                <span>@player.PlayerFirstName @player.PlayerLastName</span>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+
+
+        </div>
+
+    </div>
+</section><!-- End Our Team Section -->
+
+<section id="team" class="team section-bg">
+    <div class="container">
+        <br />
+        <div class="section-title" data-aos="fade-up">
+            <h2>Watch @Model.EditableTeam.TeamName Live</h2>
+        </div>
+
+        @foreach (var player in Model.Players)
+        {
+            if (player.TeamID == Model.EditableTeam.TeamID && player.TwitchName != null)
+            {
+                <!--Twitch embed scource:https://dev.twitch.tv/docs/embed/everything -->
+                <br />
+                <div class="section-title" data-aos="fade-up">
+                    <h4>@player.TwitchName</h4>
+                </div>
+                <div id="@player.TwitchName" style="padding:15px"></div>
+
+                <script src="https://embed.twitch.tv/embed/v1.js"></script>
+
+                <script type="text/javascript">
+            new Twitch.Embed("@player.TwitchName", {
+                width: "100%",
+                height: 400,
+                channel: "@player.TwitchName",
+                allowfullscreen: true,
+            });
+                </script>
+            }
+        }
+
+    </div>
+    </section>

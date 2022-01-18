@@ -19,6 +19,7 @@ namespace FYP_Project.ViewModels
                 this.Colleges = db.Query<College>("Select * FROM Colleges ORDER BY CollegeID DESC").ToList();
                 this.Teams = db.Query<Team>("Select * FROM Teams ORDER BY TeamID DESC").ToList();
                 this.Games = db.Query<Game>("Select * FROM Games ORDER BY GameID DESC").ToList();
+                this.Results = db.Query<Result>("Select * FROM Results ORDER BY ResultID DESC").ToList();
             }
         }
 
@@ -26,6 +27,7 @@ namespace FYP_Project.ViewModels
         public List<College> Colleges { get; set; }
         public List<Team> Teams { get; set; }
         public List<Game> Games { get; set; }
+        public List<Result> Results { get; set; }
 
         public Player EditablePlayer { get; set; }
     }

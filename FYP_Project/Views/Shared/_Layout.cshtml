@@ -35,13 +35,17 @@
     * Author: BootstrapMade.com
     * License: https://bootstrapmade.com/license/
     ======================================================== -->
-    
     <!-- CSS for table from lecture notes-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <!--CSS for Tournament Bracket source:https://codepen.io/jimmyhayek/embed/yJkdEB?height=563&theme-id=178&slug-hash=yJkdEB&default-tab=result&user=jimmyhayek&embed-version=2&pen-title=Responsive%20Tournament%20Bracket&name=cp_embed_5#result-box-->
-    <link href="~/css/Bracket.less" rel="stylesheet/less">
-    <script src="http://lesscss.googlecode.com/files/less-1.3.0.min.js"></script>
+    <!--CSS for Tournament Bracket source:https://codepen.io/jbeason/embed/Wbaedb?height=779&theme-id=178&slug-hash=Wbaedb&default-tab=result&user=jbeason&embed-version=2&pen-title=Flexbox%20Madness&name=cp_embed_4#html-box -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Holtwood+One+SC' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script|Herr+Von+Muellerhoff' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Istok+Web|Roboto+Condensed:700' rel='stylesheet' type='text/css'>
+    <link href="~/css/Bracket.css" rel="stylesheet">
+    <link href="~/css/GroupTables.css" rel="stylesheet">
 </head>
 
 <body>
@@ -52,11 +56,11 @@
 
             <!--<h1 class="logo me-auto"><a href="index.html"><span>Com</span>pany</a></h1>-->
             <!-- Uncomment below if you prefer to use an image logo -->
-            <a asp-controller=Home asp-action=Index class="logo me-auto me-lg-0"><img src="~/img/small-logo-ICE.png" alt="" class="img-fluid"></a>
+            <a asp-controller=Home asp-action=Index class="logo me-auto me-lg-0"><img src="~/img/Legion_Collegiate.png" alt="" class="img-fluid"></a>
 
             <nav id="navbar" class="navbar order-last order-lg-0">
                 <ul>
-                    <li><a asp-controller=Home asp-action=Index class="active">Home</a></li>
+                    <li><a asp-controller=Home asp-action=Index>Home</a></li>
 
                     <li class="dropdown">
                         <a href="#"><span>Our Games</span> <i class="bi bi-chevron-down"></i></a>
@@ -72,9 +76,9 @@
                                 </ul>
                             </li>
                             <li class="dropdown">
-                                <a href="team.html"><span>CS:GO</span> <i class="bi bi-chevron-right"></i></a>
+                                <a asp-controller=CSGO asp-action=Index><span>CS:GO</span> <i class="bi bi-chevron-right"></i></a>
                                 <ul>
-                                    <li><a href="#">Bracket</a></li>
+                                    <li><a asp-controller=CSGO asp-action=Bracket>Bracket</a></li>
                                     <li><a asp-controller=CSGO asp-action=Teams>Teams</a></li>
                                     <li><a href="#">Upcoming Games</a></li>
                                     <li><a href="#">Past Results</a></li>
@@ -82,9 +86,9 @@
                                 </ul>
                             </li>
                             <li class="dropdown">
-                                <a href="testimonials.html"><span>League-of-Legends</span> <i class="bi bi-chevron-right"></i></a>
+                                <a asp-controller=LeagueOfLegends asp-action=Index><span>League-of-Legends</span> <i class="bi bi-chevron-right"></i></a>
                                 <ul>
-                                    <li><a href="#">Bracket</a></li>
+                                    <li><a asp-controller=LeagueofLegends asp-action=Bracket>Bracket</a></li>
                                     <li><a asp-controller=LeagueOfLegends asp-action=Teams>Teams</a></li>
                                     <li><a href="#">Upcoming Games</a></li>
                                     <li><a href="#">Past Results</a></li>
@@ -92,9 +96,9 @@
                                 </ul>
                             </li>
                             <li class="dropdown">
-                                <a href="#"><span>Valorant</span> <i class="bi bi-chevron-right"></i></a>
+                                <a asp-controller=Valorant asp-action=Index><span>Valorant</span> <i class="bi bi-chevron-right"></i></a>
                                 <ul>
-                                    <li><a href="#">Bracket</a></li>
+                                    <li><a asp-controller=Valorant asp-action=Bracket>Bracket</a></li>
                                     <li><a asp-controller=Valorant asp-action=Teams>Teams</a></li>
                                     <li><a href="#">Upcoming Games</a></li>
                                     <li><a href="#">Past Results</a></li>

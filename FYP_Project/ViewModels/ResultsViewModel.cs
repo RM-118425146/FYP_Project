@@ -8,27 +8,32 @@ using FYP_Project.Helpers;
 
 namespace FYP_Project.ViewModels
 {
-    public class GameViewModel
+    public class ResultsViewModel
     {
-        public GameViewModel()
+
+        public ResultsViewModel()
         {
             using (var db = DbHelper.GetConnection())
             {
-                this.EditableGame = new Game();
-                this.Games = db.Query<Game>("Select * FROM Games ORDER BY GameID DESC").ToList();
+                this.EditableResult = new Result();
+                this.Results = db.Query<Result>("Select * FROM Results ORDER BY ResultID DESC").ToList();
                 this.Colleges = db.Query<College>("Select * FROM Colleges ORDER BY CollegeID DESC").ToList();
                 this.Teams = db.Query<Team>("Select * FROM Teams ORDER BY TeamID DESC").ToList();
                 this.Players = db.Query<Player>("Select * FROM Players ORDER BY PlayerID DESC").ToList();
-                this.Results = db.Query<Result>("Select * FROM Results ORDER BY ResultID DESC").ToList();
+                this.Games = db.Query<Game>("Select * FROM Games ORDER BY GameID DESC").ToList();
             }
         }
 
-        public List<Game> Games { get; set; }
         public List<College> Colleges { get; set; }
         public List<Team> Teams { get; set; }
         public List<Player> Players { get; set; }
+        public List<Game> Games { get; set; }
         public List<Result> Results { get; set; }
 
-        public Game EditableGame { get; set; }
+        public Result EditableResult { get; set; }
+        public List<Record> GroupA { get; set; }
+        public List<Record> GroupB { get; set; }
+        public List<Record> GroupC { get; set; }
+        public List<Record> GroupD { get; set; }
     }
 }

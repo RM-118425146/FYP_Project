@@ -1,621 +1,346 @@
 ﻿@{
     ViewData["Title"] = "Bracket";
 }
+@model FYP_Project.ViewModels.ResultsViewModel
 
-<div class="container-bracket">
-    <h1>Responsive Tournament Bracket</h1>
-    <h2>Ice hockey at the 1998 Winter Olympics – Men's tournament</h2>
-    <div class="tournament-bracket tournament-bracket--rounded">
+<section id="Groups">
+    <div class="section-title" data-aos="fade-up">
+        <h2>Group Stage</h2>
+    </div>
+    <div class="container" data-aos="fade-up">
+        <div class="row">
 
-        <!--Round of 16-->
-        <div class="tournament-bracket__round tournament-bracket__round--Roundof16">
-            <h3 class="tournament-bracket__round-title">Round of 16</h3>
-            <ul class="tournament-bracket__list">
-
-                <li class="tournament-bracket__item">
-                    <div class="tournament-bracket__match" tabindex="0">
-                        <table class="tournament-bracket__table">
-                            <caption class="tournament-bracket__caption">
-                                <time datetime="1998-02-18">18 February 1998</time>
-                            </caption>
-                            <thead class="sr-only">
-                                <tr>
-                                    <th>Country</th>
-                                    <th>Score</th>
-                                </tr>
-                            </thead>
-                            <tbody class="tournament-bracket__content">
-                                <tr class="tournament-bracket__team tournament-bracket__team--winner">
-                                    <td class="tournament-bracket__country">
-                                        <abbr class="tournament-bracket__code" title="Canada">CAN</abbr>
-                                        <span class="tournament-bracket__flag flag-icon flag-icon-ca" aria-label="Flag"></span>
-                                    </td>
-                                    <td class="tournament-bracket__score">
-                                        <span class="tournament-bracket__number">4</span>
-                                    </td>
-                                </tr>
-                                <tr class="tournament-bracket__team">
-                                    <td class="tournament-bracket__country">
-                                        <abbr class="tournament-bracket__code" title="Kazakhstan">KAZ</abbr>
-                                        <span class="tournament-bracket__flag flag-icon flag-icon-kz" aria-label="Flag"></span>
-                                    </td>
-                                    <td class="tournament-bracket__score">
-                                        <span class="tournament-bracket__number">1</span>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+            <!-- Group A -->
+            <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+                <div class="icon-box iconbox-blue">
+                    <div class="section-title" data-aos="fade-up">
+                        <h3>Group A</h3>
                     </div>
-                </li>
+                    <table id="customers">
+                        <tr>
+                            <th>Position</th>
+                            <th>Team</th>
+                            <th>Record</th>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>TUD Apes Vertigo</td>
+                            <td>6-0</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>UCD Leviathans A</td>
+                            <td>5-1</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Trinity Ducks A</td>
+                            <td>4-2</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>MTU Wraiths Delta</td>
+                            <td>3-3</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>TUD Apes Team Horsepower</td>
+                            <td>2-4</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>UL Esports B</td>
+                            <td>1-5</td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>MTU Wraiths Echo</td>
+                            <td>0-6</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
 
-                <li class="tournament-bracket__item">
-                    <div class="tournament-bracket__match" tabindex="0">
-                        <table class="tournament-bracket__table">
-                            <caption class="tournament-bracket__caption">
-                                <time datetime="1998-02-18">18 February 1998</time>
-                            </caption>
-                            <thead class="sr-only">
-                                <tr>
-                                    <th>Country</th>
-                                    <th>Score</th>
-                                </tr>
-                            </thead>
-                            <tbody class="tournament-bracket__content">
-                                <tr class="tournament-bracket__team tournament-bracket__team--winner">
-                                    <td class="tournament-bracket__country">
-                                        <abbr class="tournament-bracket__code" title="Canada">CAN</abbr>
-                                        <span class="tournament-bracket__flag flag-icon flag-icon-ca" aria-label="Flag"></span>
-                                    </td>
-                                    <td class="tournament-bracket__score">
-                                        <span class="tournament-bracket__number">4</span>
-                                    </td>
-                                </tr>
-                                <tr class="tournament-bracket__team">
-                                    <td class="tournament-bracket__country">
-                                        <abbr class="tournament-bracket__code" title="Kazakhstan">KAZ</abbr>
-                                        <span class="tournament-bracket__flag flag-icon flag-icon-kz" aria-label="Flag"></span>
-                                    </td>
-                                    <td class="tournament-bracket__score">
-                                        <span class="tournament-bracket__number">1</span>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+            <!-- Group B -->
+            <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+                <div class="icon-box iconbox-blue">
+                    <div class="section-title" data-aos="fade-up">
+                        <h3>Group B</h3>
                     </div>
-                </li>
+                    <table id="customers">
+                        <tr>
+                            <th>Position</th>
+                            <th>Team</th>
+                            <th>Record</th>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>UCC Epsilon</td>
+                            <td>5-0</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>UCD Leviathans A</td>
+                            <td>5-1</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Trinity Ducks A</td>
+                            <td>4-2</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>MTU Wraiths Delta</td>
+                            <td>3-3</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>TUD Apes Team Horsepower</td>
+                            <td>2-4</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>UL Esports B</td>
+                            <td>1-5</td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>MTU Wraiths Echo</td>
+                            <td>0-6</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
 
-                <li class="tournament-bracket__item">
-                    <div class="tournament-bracket__match" tabindex="0">
-                        <table class="tournament-bracket__table">
-                            <caption class="tournament-bracket__caption">
-                                <time datetime="1998-02-18">18 February 1998</time>
-                            </caption>
-                            <thead class="sr-only">
-                                <tr>
-                                    <th>Country</th>
-                                    <th>Score</th>
-                                </tr>
-                            </thead>
-                            <tbody class="tournament-bracket__content">
-                                <tr class="tournament-bracket__team tournament-bracket__team--winner">
-                                    <td class="tournament-bracket__country">
-                                        <abbr class="tournament-bracket__code" title="Canada">CAN</abbr>
-                                        <span class="tournament-bracket__flag flag-icon flag-icon-ca" aria-label="Flag"></span>
-                                    </td>
-                                    <td class="tournament-bracket__score">
-                                        <span class="tournament-bracket__number">4</span>
-                                    </td>
-                                </tr>
-                                <tr class="tournament-bracket__team">
-                                    <td class="tournament-bracket__country">
-                                        <abbr class="tournament-bracket__code" title="Kazakhstan">KAZ</abbr>
-                                        <span class="tournament-bracket__flag flag-icon flag-icon-kz" aria-label="Flag"></span>
-                                    </td>
-                                    <td class="tournament-bracket__score">
-                                        <span class="tournament-bracket__number">1</span>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+            <!-- Group C -->
+            <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+                <div class="icon-box iconbox-blue">
+                    <div class="section-title" data-aos="fade-up">
+                        <h3>Group C</h3>
                     </div>
-                </li>
+                    <table id="customers">
+                        <tr>
+                            <th>Position</th>
+                            <th>Team</th>
+                            <th>Record</th>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>TUD Apes Vertigo</td>
+                            <td>6-0</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>UCD Leviathans A</td>
+                            <td>5-1</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Trinity Ducks A</td>
+                            <td>4-2</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>MTU Wraiths Delta</td>
+                            <td>3-3</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>TUD Apes Team Horsepower</td>
+                            <td>2-4</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>UL Esports B</td>
+                            <td>1-5</td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>MTU Wraiths Echo</td>
+                            <td>0-6</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
 
-                <li class="tournament-bracket__item">
-                    <div class="tournament-bracket__match" tabindex="0">
-                        <table class="tournament-bracket__table">
-                            <caption class="tournament-bracket__caption">
-                                <time datetime="1998-02-18">18 February 1998</time>
-                            </caption>
-                            <thead class="sr-only">
-                                <tr>
-                                    <th>Country</th>
-                                    <th>Score</th>
-                                </tr>
-                            </thead>
-                            <tbody class="tournament-bracket__content">
-                                <tr class="tournament-bracket__team tournament-bracket__team--winner">
-                                    <td class="tournament-bracket__country">
-                                        <abbr class="tournament-bracket__code" title="Canada">CAN</abbr>
-                                        <span class="tournament-bracket__flag flag-icon flag-icon-ca" aria-label="Flag"></span>
-                                    </td>
-                                    <td class="tournament-bracket__score">
-                                        <span class="tournament-bracket__number">4</span>
-                                    </td>
-                                </tr>
-                                <tr class="tournament-bracket__team">
-                                    <td class="tournament-bracket__country">
-                                        <abbr class="tournament-bracket__code" title="Kazakhstan">KAZ</abbr>
-                                        <span class="tournament-bracket__flag flag-icon flag-icon-kz" aria-label="Flag"></span>
-                                    </td>
-                                    <td class="tournament-bracket__score">
-                                        <span class="tournament-bracket__number">1</span>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+            <!-- Group D -->
+            <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+                <div class="icon-box iconbox-blue">
+                    <div class="section-title" data-aos="fade-up">
+                        <br />
+                        <br />
+                        <h3>Group D</h3>
                     </div>
-                </li>
+                    <table id="customers">
+                        <tr>
+                            <th>Position</th>
+                            <th>Team</th>
+                            <th>Record</th>
+                        </tr>
+                        @{
+                            int d = 1;
+                        }
+                        @foreach (var record in Model.GroupD)
+                        {
+                            <tr>
+                                <td>@d</td>
+                                @foreach (var team in Model.Teams)
+                                {
+                                    if (record.TeamID == team.TeamID)
+                                    {
+                                        <td>@team.TeamName</td>
+                                    }
+                                }
 
-                <li class="tournament-bracket__item">
-                    <div class="tournament-bracket__match" tabindex="0">
-                        <table class="tournament-bracket__table">
-                            <caption class="tournament-bracket__caption">
-                                <time datetime="1998-02-18">18 February 1998</time>
-                            </caption>
-                            <thead class="sr-only">
-                                <tr>
-                                    <th>Country</th>
-                                    <th>Score</th>
-                                </tr>
-                            </thead>
-                            <tbody class="tournament-bracket__content">
-                                <tr class="tournament-bracket__team tournament-bracket__team--winner">
-                                    <td class="tournament-bracket__country">
-                                        <abbr class="tournament-bracket__code" title="Canada">CAN</abbr>
-                                        <span class="tournament-bracket__flag flag-icon flag-icon-ca" aria-label="Flag"></span>
-                                    </td>
-                                    <td class="tournament-bracket__score">
-                                        <span class="tournament-bracket__number">4</span>
-                                    </td>
-                                </tr>
-                                <tr class="tournament-bracket__team">
-                                    <td class="tournament-bracket__country">
-                                        <abbr class="tournament-bracket__code" title="Kazakhstan">KAZ</abbr>
-                                        <span class="tournament-bracket__flag flag-icon flag-icon-kz" aria-label="Flag"></span>
-                                    </td>
-                                    <td class="tournament-bracket__score">
-                                        <span class="tournament-bracket__number">1</span>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </li>
+                                <td>@record.Wins - @record.Losses</td>
+                            </tr>
+                            d = d + 1;
+                        }
+                        <!--
+                        <tr>
+                            <td>1</td>
+                            <td>TUD Apes Vertigo</td>
+                            <td>6-0</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>UCD Leviathans A</td>
+                            <td>5-1</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Trinity Ducks A</td>
+                            <td>4-2</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>MTU Wraiths Delta</td>
+                            <td>3-3</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>TUD Apes Team Horsepower</td>
+                            <td>2-4</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>UL Esports B</td>
+                            <td>1-5</td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>MTU Wraiths Echo</td>
+                            <td>0-6</td>
+                        </tr>
+                            -->
+                    </table>
+                </div>
+            </div>
 
-                <li class="tournament-bracket__item">
-                    <div class="tournament-bracket__match" tabindex="0">
-                        <table class="tournament-bracket__table">
-                            <caption class="tournament-bracket__caption">
-                                <time datetime="1998-02-18">18 February 1998</time>
-                            </caption>
-                            <thead class="sr-only">
-                                <tr>
-                                    <th>Country</th>
-                                    <th>Score</th>
-                                </tr>
-                            </thead>
-                            <tbody class="tournament-bracket__content">
-                                <tr class="tournament-bracket__team tournament-bracket__team--winner">
-                                    <td class="tournament-bracket__country">
-                                        <abbr class="tournament-bracket__code" title="Canada">CAN</abbr>
-                                        <span class="tournament-bracket__flag flag-icon flag-icon-ca" aria-label="Flag"></span>
-                                    </td>
-                                    <td class="tournament-bracket__score">
-                                        <span class="tournament-bracket__number">4</span>
-                                    </td>
-                                </tr>
-                                <tr class="tournament-bracket__team">
-                                    <td class="tournament-bracket__country">
-                                        <abbr class="tournament-bracket__code" title="Kazakhstan">KAZ</abbr>
-                                        <span class="tournament-bracket__flag flag-icon flag-icon-kz" aria-label="Flag"></span>
-                                    </td>
-                                    <td class="tournament-bracket__score">
-                                        <span class="tournament-bracket__number">1</span>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </li>
-
-                <li class="tournament-bracket__item">
-                    <div class="tournament-bracket__match" tabindex="0">
-                        <table class="tournament-bracket__table">
-                            <caption class="tournament-bracket__caption">
-                                <time datetime="1998-02-18">18 February 1998</time>
-                            </caption>
-                            <thead class="sr-only">
-                                <tr>
-                                    <th>Country</th>
-                                    <th>Score</th>
-                                </tr>
-                            </thead>
-                            <tbody class="tournament-bracket__content">
-                                <tr class="tournament-bracket__team tournament-bracket__team--winner">
-                                    <td class="tournament-bracket__country">
-                                        <abbr class="tournament-bracket__code" title="Canada">CAN</abbr>
-                                        <span class="tournament-bracket__flag flag-icon flag-icon-ca" aria-label="Flag"></span>
-                                    </td>
-                                    <td class="tournament-bracket__score">
-                                        <span class="tournament-bracket__number">4</span>
-                                    </td>
-                                </tr>
-                                <tr class="tournament-bracket__team">
-                                    <td class="tournament-bracket__country">
-                                        <abbr class="tournament-bracket__code" title="Kazakhstan">KAZ</abbr>
-                                        <span class="tournament-bracket__flag flag-icon flag-icon-kz" aria-label="Flag"></span>
-                                    </td>
-                                    <td class="tournament-bracket__score">
-                                        <span class="tournament-bracket__number">1</span>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </li>
-
-                <li class="tournament-bracket__item">
-                    <div class="tournament-bracket__match" tabindex="0">
-                        <table class="tournament-bracket__table">
-                            <caption class="tournament-bracket__caption">
-                                <time datetime="1998-02-18">18 February 1998</time>
-                            </caption>
-                            <thead class="sr-only">
-                                <tr>
-                                    <th>Country</th>
-                                    <th>Score</th>
-                                </tr>
-                            </thead>
-                            <tbody class="tournament-bracket__content">
-                                <tr class="tournament-bracket__team tournament-bracket__team--winner">
-                                    <td class="tournament-bracket__country">
-                                        <abbr class="tournament-bracket__code" title="Canada">CAN</abbr>
-                                        <span class="tournament-bracket__flag flag-icon flag-icon-ca" aria-label="Flag"></span>
-                                    </td>
-                                    <td class="tournament-bracket__score">
-                                        <span class="tournament-bracket__number">4</span>
-                                    </td>
-                                </tr>
-                                <tr class="tournament-bracket__team">
-                                    <td class="tournament-bracket__country">
-                                        <abbr class="tournament-bracket__code" title="Kazakhstan">KAZ</abbr>
-                                        <span class="tournament-bracket__flag flag-icon flag-icon-kz" aria-label="Flag"></span>
-                                    </td>
-                                    <td class="tournament-bracket__score">
-                                        <span class="tournament-bracket__number">1</span>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </li>
-            </ul>
-        </div>
-
-        <!--Quater finals-->
-        <div class="tournament-bracket__round tournament-bracket__round--quarterfinals">
-            <h3 class="tournament-bracket__round-title">Quarterfinals</h3>
-            <ul class="tournament-bracket__list">
-
-                <li class="tournament-bracket__item">
-                    <div class="tournament-bracket__match" tabindex="0">
-                        <table class="tournament-bracket__table">
-                            <caption class="tournament-bracket__caption">
-                                <time datetime="1998-02-18">18 February 1998</time>
-                            </caption>
-                            <thead class="sr-only">
-                                <tr>
-                                    <th>Country</th>
-                                    <th>Score</th>
-                                </tr>
-                            </thead>
-                            <tbody class="tournament-bracket__content">
-                                <tr class="tournament-bracket__team tournament-bracket__team--winner">
-                                    <td class="tournament-bracket__country">
-                                        <abbr class="tournament-bracket__code" title="Canada">CAN</abbr>
-                                        <span class="tournament-bracket__flag flag-icon flag-icon-ca" aria-label="Flag"></span>
-                                    </td>
-                                    <td class="tournament-bracket__score">
-                                        <span class="tournament-bracket__number">4</span>
-                                    </td>
-                                </tr>
-                                <tr class="tournament-bracket__team">
-                                    <td class="tournament-bracket__country">
-                                        <abbr class="tournament-bracket__code" title="Kazakhstan">KAZ</abbr>
-                                        <span class="tournament-bracket__flag flag-icon flag-icon-kz" aria-label="Flag"></span>
-                                    </td>
-                                    <td class="tournament-bracket__score">
-                                        <span class="tournament-bracket__number">1</span>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </li>
-
-                <li class="tournament-bracket__item">
-                    <div class="tournament-bracket__match" tabindex="0">
-                        <table class="tournament-bracket__table">
-                            <caption class="tournament-bracket__caption">
-                                <time datetime="1998-02-18">18 February 1998</time>
-                            </caption>
-                            <thead class="sr-only">
-                                <tr>
-                                    <th>Country</th>
-                                    <th>Score</th>
-                                </tr>
-                            </thead>
-                            <tbody class="tournament-bracket__content">
-                                <tr class="tournament-bracket__team tournament-bracket__team--winner">
-                                    <td class="tournament-bracket__country">
-                                        <abbr class="tournament-bracket__code" title="Czech Republic">CZE</abbr>
-                                        <span class="tournament-bracket__flag flag-icon flag-icon-cz" aria-label="Flag"></span>
-                                    </td>
-                                    <td class="tournament-bracket__score">
-                                        <span class="tournament-bracket__number">4</span>
-                                    </td>
-                                </tr>
-                                <tr class="tournament-bracket__team">
-                                    <td class="tournament-bracket__country">
-                                        <abbr class="tournament-bracket__code" title="Unitede states of America">USA</abbr>
-                                        <span class="tournament-bracket__flag flag-icon flag-icon-us" aria-label="Flag"></span>
-                                    </td>
-                                    <td class="tournament-bracket__score">
-                                        <span class="tournament-bracket__number">1</span>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </li>
-
-                <li class="tournament-bracket__item">
-                    <div class="tournament-bracket__match" tabindex="0">
-                        <table class="tournament-bracket__table">
-                            <caption class="tournament-bracket__caption">
-                                <time datetime="1998-02-18">18 February 1998</time>
-                            </caption>
-                            <thead class="sr-only">
-                                <tr>
-                                    <th>Country</th>
-                                    <th>Score</th>
-                                </tr>
-                            </thead>
-                            <tbody class="tournament-bracket__content">
-                                <tr class="tournament-bracket__team tournament-bracket__team--winner">
-                                    <td class="tournament-bracket__country">
-                                        <abbr class="tournament-bracket__code" title="Finland">FIN</abbr>
-                                        <span class="tournament-bracket__flag flag-icon flag-icon-fi" aria-label="Flag"></span>
-                                    </td>
-                                    <td class="tournament-bracket__score">
-                                        <span class="tournament-bracket__number">2</span>
-                                    </td>
-                                </tr>
-                                <tr class="tournament-bracket__team">
-                                    <td class="tournament-bracket__country">
-                                        <abbr class="tournament-bracket__code" title="Sweden">SVE</abbr>
-                                        <span class="tournament-bracket__flag flag-icon flag-icon-se" aria-label="Flag"></span>
-                                    </td>
-                                    <td class="tournament-bracket__score">
-                                        <span class="tournament-bracket__number">1</span>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </li>
-
-                <li class="tournament-bracket__item">
-                    <div class="tournament-bracket__match" tabindex="0">
-                        <table class="tournament-bracket__table">
-                            <caption class="tournament-bracket__caption">
-                                <time datetime="1998-02-18">18 February 1998</time>
-                            </caption>
-                            <thead class="sr-only">
-                                <tr>
-                                    <th>Country</th>
-                                    <th>Score</th>
-                                </tr>
-                            </thead>
-                            <tbody class="tournament-bracket__content">
-                                <tr class="tournament-bracket__team tournament-bracket__team--winner">
-                                    <td class="tournament-bracket__country">
-                                        <abbr class="tournament-bracket__code" title="Russia">RUS</abbr>
-                                        <span class="tournament-bracket__flag flag-icon flag-icon-ru" aria-label="Flag"></span>
-                                    </td>
-                                    <td class="tournament-bracket__score">
-                                        <span class="tournament-bracket__number">4</span>
-                                    </td>
-                                </tr>
-                                <tr class="tournament-bracket__team">
-                                    <td class="tournament-bracket__country">
-                                        <abbr class="tournament-bracket__code" title="Belarus">BEL</abbr>
-                                        <span class="tournament-bracket__flag flag-icon flag-icon-by" aria-label="Flag"></span>
-                                    </td>
-                                    <td class="tournament-bracket__score">
-                                        <span class="tournament-bracket__number">1</span>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </li>
-            </ul>
-        </div>
-
-        <!--Sen=mi Finals-->
-        <div class="tournament-bracket__round tournament-bracket__round--semifinals">
-            <h3 class="tournament-bracket__round-title">Semifinals</h3>
-            <ul class="tournament-bracket__list">
-                <li class="tournament-bracket__item">
-                    <div class="tournament-bracket__match" tabindex="0">
-                        <table class="tournament-bracket__table">
-                            <caption class="tournament-bracket__caption">
-                                <time datetime="1998-02-20">20 February 1998</time>
-                            </caption>
-                            <thead class="sr-only">
-                                <tr>
-                                    <th>Country</th>
-                                    <th>Score</th>
-                                </tr>
-                            </thead>
-                            <tbody class="tournament-bracket__content">
-                                <tr class="tournament-bracket__team">
-                                    <td class="tournament-bracket__country">
-                                        <abbr class="tournament-bracket__code" title="Canada">CAN</abbr>
-                                        <span class="tournament-bracket__flag flag-icon flag-icon-ca" aria-label="Flag"></span>
-                                    </td>
-                                    <td class="tournament-bracket__score">
-                                        <span class="tournament-bracket__number">1</span>
-                                    </td>
-                                </tr>
-                                <tr class="tournament-bracket__team tournament-bracket__team--winner">
-                                    <td class="tournament-bracket__country">
-                                        <abbr class="tournament-bracket__code" title="Czech Republic">CZE</abbr>
-                                        <span class="tournament-bracket__flag flag-icon flag-icon-cz" aria-label="Flag"></span>
-                                    </td>
-                                    <td class="tournament-bracket__score">
-                                        <span class="tournament-bracket__number">2</span>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </li>
-
-                <li class="tournament-bracket__item">
-                    <div class="tournament-bracket__match" tabindex="0">
-                        <table class="tournament-bracket__table">
-                            <caption class="tournament-bracket__caption">
-                                <time datetime="1998-02-20">20 February 1998</time>
-                            </caption>
-                            <thead class="sr-only">
-                                <tr>
-                                    <th>Country</th>
-                                    <th>Score</th>
-                                </tr>
-                            </thead>
-                            <tbody class="tournament-bracket__content">
-                                <tr class="tournament-bracket__team">
-                                    <td class="tournament-bracket__country">
-                                        <abbr class="tournament-bracket__code" title="Finland">FIN</abbr>
-                                        <span class="tournament-bracket__flag flag-icon flag-icon-fi" aria-label="Flag"></span>
-                                    </td>
-                                    <td class="tournament-bracket__score">
-                                        <span class="tournament-bracket__number">4</span>
-                                    </td>
-                                </tr>
-                                <tr class="tournament-bracket__team tournament-bracket__team--winner">
-                                    <td class="tournament-bracket__country">
-                                        <abbr class="tournament-bracket__code" title="Russia">RUS</abbr>
-                                        <span class="tournament-bracket__flag flag-icon flag-icon-ru" aria-label="Flag"></span>
-                                    </td>
-                                    <td class="tournament-bracket__score">
-                                        <span class="tournament-bracket__number">7</span>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </li>
-            </ul>
-        </div>
-
-        <!--£rd Place Playoffs-->
-        <div class="tournament-bracket__round tournament-bracket__round--bronze">
-            <h3 class="tournament-bracket__round-title">Bronze medal game</h3>
-            <ul class="tournament-bracket__list">
-                <li class="tournament-bracket__item">
-                    <div class="tournament-bracket__match" tabindex="0">
-                        <table class="tournament-bracket__table">
-                            <caption class="tournament-bracket__caption">
-                                <time datetime="1998-02-21">21 February 1998</time>
-                            </caption>
-                            <thead class="sr-only">
-                                <tr>
-                                    <th>Country</th>
-                                    <th>Score</th>
-                                </tr>
-                            </thead>
-                            <tbody class="tournament-bracket__content">
-                                <tr class="tournament-bracket__team tournament-bracket__team--winner">
-                                    <td class="tournament-bracket__country">
-                                        <abbr class="tournament-bracket__code" title="Finland">FIN</abbr>
-                                        <span class="tournament-bracket__flag flag-icon flag-icon-fi" aria-label="Flag"></span>
-                                    </td>
-                                    <td class="tournament-bracket__score">
-                                        <span class="tournament-bracket__number">3</span>
-                                        <span class="tournament-bracket__medal tournament-bracket__medal--bronze fa fa-trophy" aria-label="Bronze medal"></span>
-                                    </td>
-                                </tr>
-                                <tr class="tournament-bracket__team">
-                                    <td class="tournament-bracket__country">
-                                        <abbr class="tournament-bracket__code" title="Canada">CAN</abbr>
-                                        <span class="tournament-bracket__flag flag-icon flag-icon-ca" aria-label="Flag"></span>
-                                    </td>
-                                    <td class="tournament-bracket__score">
-                                        <span class="tournament-bracket__number">2</span>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </li>
-            </ul>
-        </div>
-
-        <!--Finals-->
-        <div class="tournament-bracket__round tournament-bracket__round--gold">
-            <h3 class="tournament-bracket__round-title">Gold medal game</h3>
-            <ul class="tournament-bracket__list">
-                <li class="tournament-bracket__item">
-                    <div class="tournament-bracket__match" tabindex="0">
-                        <table class="tournament-bracket__table">
-                            <caption class="tournament-bracket__caption">
-                                <time datetime="1998-02-22">22 February 1998</time>
-                            </caption>
-                            <thead class="sr-only">
-                                <tr>
-                                    <th>Country</th>
-                                    <th>Score</th>
-                                </tr>
-                            </thead>
-                            <tbody class="tournament-bracket__content">
-                                <tr class="tournament-bracket__team tournament-bracket__team--winner">
-                                    <td class="tournament-bracket__country">
-                                        <abbr class="tournament-bracket__code" title="Czech Republic">CZE</abbr>
-                                        <span class="tournament-bracket__flag flag-icon flag-icon-cz" aria-label="Flag"></span>
-                                    </td>
-                                    <td class="tournament-bracket__score">
-                                        <span class="tournament-bracket__number">1</span>
-                                        <span class="tournament-bracket__medal tournament-bracket__medal--gold fa fa-trophy" aria-label="Gold medal"></span>
-                                    </td>
-                                </tr>
-                                <tr class="tournament-bracket__team">
-                                    <td class="tournament-bracket__country">
-                                        <abbr class="tournament-bracket__code" title="Russia">RUS</abbr>
-                                        <span class="tournament-bracket__flag flag-icon flag-icon-ru" aria-label="Flag"></span>
-                                    </td>
-                                    <td class="tournament-bracket__score">
-                                        <span class="tournament-bracket__number">0</span>
-                                        <span class="tournament-bracket__medal tournament-bracket__medal--silver fa fa-trophy" aria-label="Silver medal"></span>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </li>
-            </ul>
         </div>
     </div>
-</div>
+</section>
+
+<section id="bracket">
+    <div class="section-title" data-aos="fade-up">
+        <h2>Playoffs</h2>
+    </div>
+    <div class="bracketContainer">
+        <div class="split split-one">
+
+            <div class="round round-two current">
+                <div class="round-details">Round One<br /><span class="date">December 02 2021</span></div>
+                <ul class="matchup">
+                    <li class="bracketTeam team-top">TUD Apes Vertigo<span class="score">4</span></li>
+                    <li class="bracketTeam team-bottom">UL Esports<span class="score">0</span></li>
+                </ul>
+                <ul class="matchup">
+                    <li class="bracketTeam team-top">TUD Apes A+<span class="score">L</span></li>
+                    <li class="bracketTeam team-bottom">Trinity Ducks A<span class="score">W</span></li>
+                </ul>
+                <ul class="matchup">
+                    <li class="bracketTeam team-top">DCU Titans<span class="score">4</span></li>
+                    <li class="bracketTeam team-bottom">MTU Wraiths Delta<span class="score">0</span></li>
+                </ul>
+                <ul class="matchup">
+                    <li class="bracketTeam team-top">UCD Leviathans A<span class="score">W</span></li>
+                    <li class="bracketTeam team-bottom">Queens Jesters<span class="score">L</span></li>
+                </ul>
+            </div>  <!-- END ROUND ONE -->
+
+            <div class="round round-three current">
+                <div class="round-details">Quater-Finals<br /><span class="date">January 13 2022</span></div>
+                <ul class="matchup">
+                    <li class="bracketTeam team-top">TUD Apes Vertigo<span class="score">&nbsp;</span></li>
+                    <li class="bracketTeam team-bottom">Trinity Ducks A<span class="score">&nbsp;</span></li>
+                </ul>
+                <ul class="matchup">
+                    <li class="bracketTeam team-top">DCU Titans<span class="score">&nbsp;</span></li>
+                    <li class="bracketTeam team-bottom">UCD Leviathans A<span class="score">&nbsp;</span></li>
+                </ul>
+            </div>  <!-- END QUATERS -->
+        </div>
+
+        <div class="champion">
+            <div class="semis-l">
+                <div class="round-details">Semi-Finals <br /><span class="date">January 20 2022</span></div>
+                <ul class="matchup championship">
+                    <li class="bracketTeam team-top">&nbsp;<span class="vote-count">&nbsp;</span></li>
+                    <li class="bracketTeam team-bottom">&nbsp;<span class="vote-count">&nbsp;</span></li>
+                </ul>
+            </div>
+            <div class="final">
+                <i class="fa fa-trophy"></i>
+                <div class="round-details">Finals <br /><span class="date">January 27 2022</span></div>
+                <ul class="matchup championship">
+                    <li class="bracketTeam team-top">&nbsp;<span class="vote-count">&nbsp;</span></li>
+                    <li class="bracketTeam team-bottom">&nbsp;<span class="vote-count">&nbsp;</span></li>
+                </ul>
+            </div>
+            <div class="semis-r">
+                <div class="round-details">Semi-Finals <br /><span class="date">January 20 2022</span></div>
+                <ul class="matchup championship">
+                    <li class="bracketTeam team-top">&nbsp;<span class="vote-count">&nbsp;</span></li>
+                    <li class="bracketTeam team-bottom">&nbsp;<span class="vote-count">&nbsp;</span></li>
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="split split-two">
+
+
+            <div class="round round-three current">
+                <div class="round-details">Quater-Finals<br /><span class="date">January 13 2022</span></div>
+                <ul class="matchup">
+                    <li class="bracketTeam team-top"><img src="~/img/uccRebels.png" width="20px" height="100%" /> UCC Epsilon<span class="score">&nbsp;</span></li>
+                    <li class="bracketTeam team-bottom">NUIG Griffins<span class="score">&nbsp;</span></li>
+                </ul>
+                <ul class="matchup">
+                    <li class="bracketTeam team-top">WIT Vikings<span class="score">&nbsp;</span></li>
+                    <li class="bracketTeam team-bottom">QUB Monarchs<span class="score">&nbsp;</span></li>
+                </ul>
+            </div>  <!-- END ROUND QUATERS -->
+
+            <div class="round round-two current">
+                <div class="round-details">Round One<br /><span class="date">December 02 2021</span></div>
+                <ul class="matchup">
+                    <li class="bracketTeam team-top"><img src="~/img/uccRebels.png" width="20px" height="100%" /> UCC Epsilon<span class="score">4</span></li>
+                    <li class="bracketTeam team-bottom">QUB White Tigers<span class="score">0</span></li>
+                </ul>
+                <ul class="matchup">
+                    <li class="bracketTeam team-top">NUIG Griffins<span class="score">4</span></li>
+                    <li class="bracketTeam team-bottom">Trinity Ducks B<span class="score">0</span></li>
+                </ul>
+                <ul class="matchup">
+                    <li class="bracketTeam team-top">WIT Vikings<span class="score">4</span></li>
+                    <li class="bracketTeam team-bottom">UCD Leviathans B<span class="score">0</span></li>
+                </ul>
+                <ul class="matchup">
+                    <li class="bracketTeam team-top">QUB Monarchs<span class="score">4</span></li>
+                    <li class="bracketTeam team-bottom">NCI Panthers<span class="score">0</span></li>
+                </ul>
+            </div>  <!-- END ROUND ONE -->
+        </div>
+    </div>
+</section>
