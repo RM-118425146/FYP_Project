@@ -1,0 +1,46 @@
+﻿@{
+    ViewData["Title"] = "Stats";
+}
+@model FYP_Project.ViewModels.ResultsViewModel
+
+<section id="services" class="services section-bg">
+    <div class="container" data-aos="fade-up">
+
+        <div class="section-title" data-aos="fade-up">
+            <h2>Rocket League Player Stats</h2>
+        </div>
+
+        <table id="statsTable" class="table table-hover table-responsive" style="margin-left: auto; margin-right: auto ">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">name</th>
+                    <th scope="col">team</th>
+                    <th scope="col">win %</th>
+                    <th scope="col">Average Points</th>
+                    <th scope="col">Goals Scored</th>
+                    <th scope="col">Saves</th>
+                    <th scope="col">Average Speed</th>
+                </tr>
+            </thead>
+            <tbody class="statsTable">
+            </tbody>
+        </table>
+    </div>
+
+    <script src="~/js/Stats.js"></script>
+
+    <!-- Datatable syling and functionality https://datatables.net/manual/installation -->
+    <link rel="stylesheet" type="text/css" href="~/DataTables/datatables.css" />
+
+    <script type="text/javascript" src="~/DataTables/datatables.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    
+    <script>
+        $(document).ready(function () {
+            $('#statsTable').DataTable();
+        });
+    </script>
+
+</section>

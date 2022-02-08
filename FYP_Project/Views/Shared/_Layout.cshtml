@@ -70,9 +70,9 @@
                                 <ul>
                                     <li><a asp-controller=RocketLeague asp-action=Bracket>Bracket</a></li>
                                     <li><a asp-controller=RocketLeague asp-action=Teams>Teams</a></li>
-                                    <li><a href="#">Upcoming Games</a></li>
-                                    <li><a href="#">Past Results</a></li>
-                                    <li><a href="#">Stats</a></li>
+                                    <li><a asp-controller=RocketLeague asp-action=UpcomingGames>Upcoming Games</a></li>
+                                    <li><a asp-controller=RocketLeague asp-action=PastResults>Past Results</a></li>
+                                    <li><a asp-controller=RocketLeague asp-action=Stats>Stats</a></li>
                                 </ul>
                             </li>
                             <li class="dropdown">
@@ -110,9 +110,9 @@
 
                     <li><a asp-controller=Watch asp-action=Index>Watch Live</a></li>
                     <li><a href="https://www.challengermode.com/s/LegionCollegiate" >Challengermode</a></li>
-                    <li><a href=#>About Us</a></li>
+                    <li><a asp-controller=AboutUs asp-action=Index>About Us</a></li>
                     <li><a href=#>Register</a></li>
-                    <li><a href=#>Contact Us</a></li>
+                    <li><a asp-controller=ContactUs asp-action=Index>Contact Us</a></li>
 
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle">
@@ -137,11 +137,11 @@
                     <div class="row">
 
                         <div class="col-lg-3 col-md-6 footer-contact">
-                            <h3>Company</h3>
+                            <h3>Legion Collegiate</h3>
                             <p>
-                                A108 Adam Street <br>
-                                New York, NY 535022<br>
-                                United States <br><br>
+                                The Portershed, Eyre Square <br>
+                                Galway, H91 HY51<br>
+                                Ireland <br><br>
                                 <strong>Phone:</strong> +1 5589 55488 55<br>
                                 <strong>Email:</strong> info@example.com<br>
                             </p>
@@ -150,11 +150,13 @@
                         <div class="col-lg-2 col-md-6 footer-links">
                             <h4>Useful Links</h4>
                             <ul>
-                                <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-                                <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
-                                <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
-                                <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
-                                <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+                                <li><i class="bx bx-chevron-right"></i> <a asp-controller=Home asp-action=Index>Home</a></li>
+                                <li><i class="bx bx-chevron-right"></i> <a asp-controller=AboutUs asp-action=Index>About us</a></li>
+                                <li><i class="bx bx-chevron-right"></i> <a asp-controller=ContactUs asp-action=Index>Contact Us</a></li>
+                                <li><i class="bx bx-chevron-right"></i> <a asp-controller=RocketLeague asp-action=Index>Rocket League</a></li>
+                                <li><i class="bx bx-chevron-right"></i> <a asp-controller=CSGO asp-action=Index>CS:GO</a></li>
+                                <li><i class="bx bx-chevron-right"></i> <a asp-controller=LeagueOfLegends asp-action=Index>League of Legends</a></li>
+                                <li><i class="bx bx-chevron-right"></i> <a asp-controller=Valorant asp-action=Index>Valorant</a></li>
                             </ul>
                         </div>
 
@@ -166,7 +168,7 @@
 
                 <div class="me-md-auto text-center text-md-start">
                     <div class="copyright">
-                        &copy; Copyright <strong><span>Company</span></strong>. All Rights Reserved
+                        &copy; Copyright <strong><span>Legion Collegiate</span></strong>. All Rights Reserved
                     </div>
                     <div class="credits">
                         <!-- All the links in the footer should remain intact. -->

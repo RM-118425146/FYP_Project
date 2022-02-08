@@ -9,7 +9,7 @@
 
             @foreach (var team in Model.Teams)
             {
-                @if (team.GameID == 0)
+                if (team.GameID == 0)
                 {
                     if (team.ImageURL == null)
                     {

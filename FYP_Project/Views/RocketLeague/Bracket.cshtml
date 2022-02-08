@@ -186,6 +186,7 @@
                                 <td>@d</td>
                                 @foreach (var team in Model.Teams)
                                 {
+
                                     if (record.TeamID == team.TeamID)
                                     {
                                         <td>@team.TeamName</td>
@@ -194,45 +195,8 @@
 
                                 <td>@record.Wins - @record.Losses</td>
                             </tr>
-                            d = d + 1;
+                            d += 1;
                         }
-                        <!--
-                        <tr>
-                            <td>1</td>
-                            <td>TUD Apes Vertigo</td>
-                            <td>6-0</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>UCD Leviathans A</td>
-                            <td>5-1</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Trinity Ducks A</td>
-                            <td>4-2</td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td>MTU Wraiths Delta</td>
-                            <td>3-3</td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td>TUD Apes Team Horsepower</td>
-                            <td>2-4</td>
-                        </tr>
-                        <tr>
-                            <td>6</td>
-                            <td>UL Esports B</td>
-                            <td>1-5</td>
-                        </tr>
-                        <tr>
-                            <td>7</td>
-                            <td>MTU Wraiths Echo</td>
-                            <td>0-6</td>
-                        </tr>
-                            -->
                     </table>
                 </div>
             </div>

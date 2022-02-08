@@ -30,7 +30,7 @@ namespace FYP_Project.Controllers
         public IActionResult Teams()
         {
             TeamViewModel viewModel = new TeamViewModel();
-            return View("Teams",viewModel);
+            return View("Teams", viewModel);
         }
 
         [Route("/RocketLeague/Bracket")]
@@ -42,118 +42,249 @@ namespace FYP_Project.Controllers
             List<Record> TempC = new List<Record>();
             List<Record> TempD = new List<Record>();
 
-            /*
-            var filteredResults = viewModel.Results.Where(result => result.Group.Equals(4));
-            foreach (var result in filteredResults)
-            {
-                if(TempD.Count == 0)
-                {
-                    Record temp = new Record(result.WinningTeamID, 1, 0);
-                    TempD.Add(temp);
-                }
-                else
-                {
-                    foreach(var team in TempD)
-                    {
-                        if(result.WinningTeamID == team.TeamID)
-                        {
-                            int wins = team.Wins + 1;
-                            Record temp = new Record(team.TeamID, wins, team.Losses);
-                            TempD.RemoveAll(team => team.TeamID == result.WinningTeamID);
-                            TempD.Add(temp);
-                        }
-                        else
-                        {
-                            Record temp = new Record(team.TeamID, 1, 0);
-                            TempD.Add(temp);
-                        }
-                    }
-                }
-            }
-
-            */
             foreach (var Result in viewModel.Results)
             {
-                if (Result.Playoffs == 1)
+                if (Result.GameID == 0)
                 {
 
-                    if (Result.Group == 1)
+                    if (Result.Playoffs == 1)
                     {
 
-                    }
-                    else if (Result.Group == 2)
-                    {
-
-                    }
-                    else if (Result.Group == 3)
-                    {
-
-                    }
-                    else if (Result.Group == 4)
-                    {
-                        if (TempD.Count == 0)
+                        if (Result.Group == 1)
                         {
-                            Record temp = new Record(Result.WinningTeamID, 1, 0);
-                            Record temp2 = new Record(Result.LosingTeamID, 0, 1);
-                            TempD.Add(temp);
-                            TempD.Add(temp2);
+                            if (TempA.Count == 0)
+                            {
+                                Record temp = new Record(Result.WinningTeamID, 1, 0);
+                                Record temp2 = new Record(Result.LosingTeamID, 0, 1);
+                                TempA.Add(temp);
+                                TempA.Add(temp2);
+                            }
+                            else
+                            {
+
+                                for (int j = TempA.Count - 1; j >= 0; j--)
+                                {
+                                    if (Result.WinningTeamID == TempA[j].TeamID)
+                                    {
+                                        TempA[j].Wins++;
+                                        j = 0;
+                                        for (int k = TempA.Count - 1; k >= 0; k--)
+                                        {
+                                            if (TempA[k].TeamID == Result.LosingTeamID)
+                                            {
+                                                TempA[k].Losses++;
+                                                k = 0;
+                                            }
+                                            else if (k == 0 && (TempA[k].TeamID != Result.LosingTeamID))
+                                            {
+                                                Record temp = new Record(Result.LosingTeamID, 0, 1);
+                                                TempA.Add(temp);
+                                            }
+                                        }
+                                    }
+                                    else if (j == 0 && Result.WinningTeamID != TempA[j].TeamID)
+                                    {
+                                        if (Result.WinningTeamID != TempA[j].TeamID)
+                                        {
+                                            Record temp = new Record(Result.WinningTeamID, 1, 0);
+                                            TempA.Add(temp);
+
+                                            for (int k = TempA.Count - 1; k >= 0; k--)
+                                            {
+                                                if (TempA[k].TeamID == Result.LosingTeamID)
+                                                {
+                                                    TempA[k].Losses++;
+                                                    k = 0;
+                                                }
+                                                else if (k == 0 && (TempA[k].TeamID != Result.LosingTeamID))
+                                                {
+                                                    Record temp2 = new Record(Result.LosingTeamID, 0, 1);
+                                                    TempA.Add(temp2);
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
                         }
-                        else
+                        else if (Result.Group == 2)
                         {
-                            
-                            for (int j = TempD.Count - 1; j >= 0; j--)
+                            if (TempB.Count == 0)
                             {
-                                if (Result.WinningTeamID == TempD[j].TeamID)
-                                {
-                                    TempD[j].Wins++;
-                                }
-                                else if (Result.LosingTeamID == TempD[j].TeamID)
-                                {
-                                    TempD[j].Losses++;
-                                }
-                                else if (j == 0 && (Result.WinningTeamID != TempD[j].TeamID || Result.LosingTeamID != TempD[j].TeamID))
-                                {
-                                    if (Result.WinningTeamID != TempD[j].TeamID)
-                                    {
-                                        Record temp = new Record(Result.WinningTeamID, 1, 0);
-                                        TempD.Add(temp);
-                                    }
-                                    else
-                                    {
-                                        Record temp = new Record(Result.LosingTeamID, 1, 0);
-                                        TempD.Add(temp);
-                                    }
-                                }
-                                else
-                                {
-                                    Record temp = new Record(Result.WinningTeamID, 1, 0);
-                                    TempD.Add(temp);
-                                }
+                                Record temp = new Record(Result.WinningTeamID, 1, 0);
+                                Record temp2 = new Record(Result.LosingTeamID, 0, 1);
+                                TempB.Add(temp);
+                                TempB.Add(temp2);
                             }
-                            
+                            else
+                            {
 
-                            /*
-                            foreach(var team in TempD)
-                            {
-                                if(Result.WinningTeamID == team.TeamID)
+                                for (int j = TempB.Count - 1; j >= 0; j--)
                                 {
-                                    int wins = team.Wins + 1;
-                                    Record temp = new Record(team.TeamID, wins, team.Losses);
-                                    TempD.RemoveAll(team => team.TeamID == Result.WinningTeamID);
-                                    TempD.Add(temp);
-                                }
-                                else
-                                {
-                                    Record temp = new Record(Result.WinningTeamID, 1, 0);
-                                    TempD.Add(temp);
+                                    if (Result.WinningTeamID == TempB[j].TeamID)
+                                    {
+                                        TempB[j].Wins++;
+                                        j = 0;
+                                        for (int k = TempB.Count - 1; k >= 0; k--)
+                                        {
+                                            if (TempB[k].TeamID == Result.LosingTeamID)
+                                            {
+                                                TempB[k].Losses++;
+                                                k = 0;
+                                            }
+                                            else if (k == 0 && (TempB[k].TeamID != Result.LosingTeamID))
+                                            {
+                                                Record temp = new Record(Result.LosingTeamID, 0, 1);
+                                                TempB.Add(temp);
+                                            }
+                                        }
+                                    }
+                                    else if (j == 0 && Result.WinningTeamID != TempB[j].TeamID)
+                                    {
+                                        if (Result.WinningTeamID != TempB[j].TeamID)
+                                        {
+                                            Record temp = new Record(Result.WinningTeamID, 1, 0);
+                                            TempB.Add(temp);
+
+                                            for (int k = TempB.Count - 1; k >= 0; k--)
+                                            {
+                                                if (TempB[k].TeamID == Result.LosingTeamID)
+                                                {
+                                                    TempB[k].Losses++;
+                                                    k = 0;
+                                                }
+                                                else if (k == 0 && (TempB[k].TeamID != Result.LosingTeamID))
+                                                {
+                                                    Record temp2 = new Record(Result.LosingTeamID, 0, 1);
+                                                    TempB.Add(temp2);
+                                                }
+                                            }
+                                        }
+                                    }
                                 }
                             }
-                            */
+                        }
+                        else if (Result.Group == 3)
+                        {
+                            if (TempC.Count == 0)
+                            {
+                                Record temp = new Record(Result.WinningTeamID, 1, 0);
+                                Record temp2 = new Record(Result.LosingTeamID, 0, 1);
+                                TempC.Add(temp);
+                                TempC.Add(temp2);
+                            }
+                            else
+                            {
+
+                                for (int j = TempC.Count - 1; j >= 0; j--)
+                                {
+                                    if (Result.WinningTeamID == TempC[j].TeamID)
+                                    {
+                                        TempC[j].Wins++;
+                                        j = 0;
+                                        for (int k = TempC.Count - 1; k >= 0; k--)
+                                        {
+                                            if (TempC[k].TeamID == Result.LosingTeamID)
+                                            {
+                                                TempC[k].Losses++;
+                                                k = 0;
+                                            }
+                                            else if (k == 0 && (TempC[k].TeamID != Result.LosingTeamID))
+                                            {
+                                                Record temp = new Record(Result.LosingTeamID, 0, 1);
+                                                TempC.Add(temp);
+                                            }
+                                        }
+                                    }
+                                    else if (j == 0 && Result.WinningTeamID != TempC[j].TeamID)
+                                    {
+                                        if (Result.WinningTeamID != TempC[j].TeamID)
+                                        {
+                                            Record temp = new Record(Result.WinningTeamID, 1, 0);
+                                            TempC.Add(temp);
+
+                                            for (int k = TempC.Count - 1; k >= 0; k--)
+                                            {
+                                                if (TempC[k].TeamID == Result.LosingTeamID)
+                                                {
+                                                    TempC[k].Losses++;
+                                                    k = 0;
+                                                }
+                                                else if (k == 0 && (TempC[k].TeamID != Result.LosingTeamID))
+                                                {
+                                                    Record temp2 = new Record(Result.LosingTeamID, 0, 1);
+                                                    TempC.Add(temp2);
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        else if (Result.Group == 4)
+                        {
+                            if (TempD.Count == 0)
+                            {
+                                Record temp = new Record(Result.WinningTeamID, 1, 0);
+                                Record temp2 = new Record(Result.LosingTeamID, 0, 1);
+                                TempD.Add(temp);
+                                TempD.Add(temp2);
+                            }
+                            else
+                            {
+
+                                for (int j = TempD.Count - 1; j >= 0; j--)
+                                {
+                                    if (Result.WinningTeamID == TempD[j].TeamID)
+                                    {
+                                        TempD[j].Wins++;
+                                        j = 0;
+                                        for (int k = TempD.Count - 1; k >= 0; k--)
+                                        {
+                                            if (TempD[k].TeamID == Result.LosingTeamID)
+                                            {
+                                                TempD[k].Losses++;
+                                                k = 0;
+                                            }
+                                            else if (k == 0 && (TempD[k].TeamID != Result.LosingTeamID))
+                                            {
+                                                Record temp = new Record(Result.LosingTeamID, 0, 1);
+                                                TempD.Add(temp);
+                                            }
+                                        }
+                                    }
+                                    else if (j == 0 && Result.WinningTeamID != TempD[j].TeamID)
+                                    {
+                                        if (Result.WinningTeamID != TempD[j].TeamID)
+                                        {
+                                            Record temp = new Record(Result.WinningTeamID, 1, 0);
+                                            TempD.Add(temp);
+
+                                            for (int k = TempD.Count - 1; k >= 0; k--)
+                                            {
+                                                if (TempD[k].TeamID == Result.LosingTeamID)
+                                                {
+                                                    TempD[k].Losses++;
+                                                    k = 0;
+                                                }
+                                                else if (k == 0 && (TempD[k].TeamID != Result.LosingTeamID))
+                                                {
+                                                    Record temp2 = new Record(Result.LosingTeamID, 0, 1);
+                                                    TempD.Add(temp2);
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
                 }
             }
 
+            viewModel.GroupA = TempA.OrderByDescending(team => team.Wins).ToList();
+            viewModel.GroupB = TempB.OrderByDescending(team => team.Wins).ToList();
+            viewModel.GroupC = TempC.OrderByDescending(team => team.Wins).ToList();
             viewModel.GroupD = TempD.OrderByDescending(team => team.Wins).ToList();
             return View("Bracket", viewModel);
         }
@@ -162,14 +293,35 @@ namespace FYP_Project.Controllers
         public IActionResult Players(string name)
         {
             TeamViewModel viewModel = new TeamViewModel();
-            foreach(var Team in viewModel.Teams)
+            foreach (var Team in viewModel.Teams)
             {
-                if(Team.TeamName == name)
+                if (Team.TeamName == name)
                 {
                     viewModel.EditableTeam = Team;
                 }
             }
             return View("Players", viewModel);
+        }
+
+        [Route("/RocketLeague/PastResults")]
+        public IActionResult PastResults()
+        {
+            ResultsViewModel viewModel = new ResultsViewModel();
+            return View("PastResults", viewModel);
+        }
+
+        [Route("/RocketLeague/UpcomingGames")]
+        public IActionResult UpcomingGames()
+        {
+            ResultsViewModel viewModel = new ResultsViewModel();
+            return View("UpcomingGames", viewModel);
+        }
+
+        [Route("/RocketLeague/Stats")]
+        public IActionResult Stats()
+        {
+            ResultsViewModel viewModel = new ResultsViewModel();
+            return View("Stats", viewModel);
         }
     }
 }

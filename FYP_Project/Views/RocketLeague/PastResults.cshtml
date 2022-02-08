@@ -1,0 +1,69 @@
+﻿@{
+    ViewData["Title"] = "Results";
+}
+@model FYP_Project.ViewModels.ResultsViewModel
+<!-- ======= Services Section ======= -->
+<section id="services" class="services section-bg">
+    <div class="container" data-aos="fade-up">
+        <div class="row">
+
+            @foreach (var result in Model.Results)
+            {
+                if (result.GameID == 0)
+                {
+                    if (result.MatchDate < System.DateTime.Now)
+                    {
+
+                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+                        <div class="icon-box iconbox-blue">
+                            <div class="icon">
+                                @foreach (var team in Model.Teams)
+                                {
+                                    if (team.TeamID == result.Team1ID)
+                                    {
+                                        if (team.ImageURL == null)
+                                        {
+                                            team.ImageURL = "Rocket-League-Emblem.png";
+                                        }
+                                        <img src="~/img/@team.ImageURL" style="width:80px;height:auto;" />
+                                    }
+                                }
+                                <h4> VS </h4>
+                                @foreach (var team in Model.Teams)
+                                {
+                                    if (team.TeamID == result.Team2ID)
+                                    {
+                                        if (team.ImageURL == null)
+                                        {
+                                            team.ImageURL = "Rocket-League-Emblem.png";
+                                        }
+                                        <img src="~/img/@team.ImageURL" style="width:80px;height:auto;" />
+                                    }
+                                }
+                            </div>
+                            @foreach (var team in Model.Teams)
+                            {
+                                if (team.TeamID == result.Team1ID)
+                                {
+                                    <h4><a href="/RocketLeague/@team.TeamName">@team.TeamName</a></h4>
+                                }
+                            }
+                            <h4>@result.Team1Score - @result.Team2Score</h4>
+                            @foreach (var team in Model.Teams)
+                            {
+                                if (team.TeamID == result.Team2ID)
+                                {
+                                    <h4><a href="/RocketLeague/@team.TeamName">@team.TeamName</a></h4>
+                                }
+                            }
+                            <p>@result.MatchDate</p>
+                        </div>
+                    </div>
+                    }
+                }
+            }
+
+        </div>
+
+    </div>
+</section><!-- End Services Section -->
