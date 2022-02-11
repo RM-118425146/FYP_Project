@@ -15,6 +15,7 @@ namespace FYP_Project.Controllers
         [Route("/RocketLeague/Home")]
         public IActionResult Index()
         {
+
             GameViewModel viewModel = new GameViewModel();
             foreach (var game in viewModel.Games)
             {
@@ -289,7 +290,7 @@ namespace FYP_Project.Controllers
             return View("Bracket", viewModel);
         }
 
-        [Route("{name}")]
+        [Route("/RocketLeague/Team/{name}")]
         public IActionResult Players(string name)
         {
             TeamViewModel viewModel = new TeamViewModel();
@@ -322,6 +323,16 @@ namespace FYP_Project.Controllers
         {
             ResultsViewModel viewModel = new ResultsViewModel();
             return View("Stats", viewModel);
+        }
+
+        [Route("/RocketLeague/Player/{name}")]
+        public IActionResult PlayerStats(string name)
+        {
+            TeamViewModel viewModel = new TeamViewModel();
+
+            ViewBag.name = name;
+
+            return View("PlayerStats", viewModel);
         }
     }
 }

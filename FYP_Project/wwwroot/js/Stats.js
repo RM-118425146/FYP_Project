@@ -15,47 +15,34 @@ fetch(proxyUrl + apiUrl, requestOptions)
     .then(result => { renderStats(result); })
     .catch(error => console.log('error', error));
 
-const names = [];
-
-
-
-
 function renderStats(result) {
-    
-    let html = '';
-    let i = 1;
-    console.log(result);
-    result.players.forEach(player => {
-        let htmlSegment = `<tr>
-                                <th scope="row">${i}</th>
-                                <td>${player.name}</td>
-                                <td>${player.team}</td>
-                                <td>${player.cumulative.win_percentage}</td>
-                                <td>${player.game_average.core.score}</td>
-                                <td>${player.cumulative.core.goals}</td>
-                                <td>${player.cumulative.core.saves}</td>
-                                <td>${player.game_average.movement.avg_speed}</td>    
-                            </tr>`;
 
-        html += htmlSegment;
-        i += 1;
-        names[1] = player.name;
-    });
-    
+    document.getElementById('loading').style.visibility = 'hidden';
    
+    $(document).ready(function () {
+        $('#statsTable').DataTable({
+            responsive: true,
+            keys: true,
+            fixedHeader: true,
+            data: result.players,
+            columns: [
+                { data: 'name', title: 'Player Name' },
+                { data: 'team', title: 'Team Name' },
+                { data: 'cumulative.win_percentage', title: 'Win %' },
+                { data: 'game_average.core.score', title: 'Average Score' },
+                { data: 'cumulative.core.goals', title: 'Total Goals Scored' },
+                { data: 'cumulative.core.saves', title: 'Total Saves Made' },
+                { data: 'game_average.movement.avg_speed', title: 'Average Car Speed' }
+            ],
+            columnDefs: [{
+                targets: 0,
+                data: 'name',
+                render: function (data, type, full, meta) {
+                    return '<a href="/RocketLeague/Player/' + data + '">' + data + '</a>';
+                }
+            }]
+        });
+    });
 
-    let container = document.querySelector('.statsTable');
-    container.innerHTML = html;
-
-
-    /*
-    let options = document.getElementById('.names');
-    let html2 = '';
-    names.forEach(name => {
-        let htmlSegment = '<option value="${name}">${name}</option>';
-        html2 += htmlSegment;
-    })
-    options.innerHTML = html2;
-    */
 }
 

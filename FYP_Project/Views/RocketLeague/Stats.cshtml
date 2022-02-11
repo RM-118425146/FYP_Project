@@ -10,37 +10,24 @@
             <h2>Rocket League Player Stats</h2>
         </div>
 
-        <table id="statsTable" class="table table-hover table-responsive" style="margin-left: auto; margin-right: auto ">
+        <table id="statsTable" class="display" style="width:100%">
             <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">name</th>
-                    <th scope="col">team</th>
-                    <th scope="col">win %</th>
-                    <th scope="col">Average Points</th>
-                    <th scope="col">Goals Scored</th>
-                    <th scope="col">Saves</th>
-                    <th scope="col">Average Speed</th>
-                </tr>
             </thead>
-            <tbody class="statsTable">
+            <tbody class="statsTableBody">
             </tbody>
         </table>
+
+        <img src="~/img/loading-circle.gif" id="loading" style="visibility: visible; width: 10%; margin-left: auto; margin-right: auto; display: block;" />
+
     </div>
 
-    <script src="~/js/Stats.js"></script>
-
     <!-- Datatable syling and functionality https://datatables.net/manual/installation -->
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
     <link rel="stylesheet" type="text/css" href="~/DataTables/datatables.css" />
 
     <script type="text/javascript" src="~/DataTables/datatables.min.js"></script>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    
-    <script>
-        $(document).ready(function () {
-            $('#statsTable').DataTable();
-        });
-    </script>
+    <script src="~/js/Stats.js"></script>
 
 </section>

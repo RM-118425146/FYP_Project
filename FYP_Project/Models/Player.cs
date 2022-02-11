@@ -11,7 +11,7 @@ namespace FYP_Project.Models
     public class Player
     {
         [ExplicitKey]
-        public int PlayerID { get; set; }
+        public int? PlayerID { get; set; }
 
         [Required]
         public string GamerTag { get; set; }
@@ -26,18 +26,16 @@ namespace FYP_Project.Models
         [MaxLength(30, ErrorMessage = "Last name must be shorter than 30 characters!")]
         public string PlayerLastName { get; set; }
 
-        [Required]
-        [MinLength(2, ErrorMessage = "Address must be longer than 2 characters!")]
-        [MaxLength(200, ErrorMessage = "Address must be shorter than 200 characters!")]
         public string PlayerAddress { get; set; }
 
-        [Required]
-        [MinLength(2, ErrorMessage = "Address must be longer than 2 characters!")]
-        [MaxLength(10, ErrorMessage = "Address must be shorter than 10 characters!")]
         public int  PlayerTelephone { get; set; }
 
         public int TeamID { get; set; }
 
         public string? TwitchName { get; set; }
+
+        public string emailAddress { get; set; }
+
+        public string password { get; set; }
     }
 }
