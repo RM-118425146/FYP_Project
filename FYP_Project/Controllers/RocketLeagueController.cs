@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using FYP_Project.ViewModels;
 using FYP_Project.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace FYP_Project.Controllers
 {
@@ -15,6 +16,7 @@ namespace FYP_Project.Controllers
         [Route("/RocketLeague/Home")]
         public IActionResult Index()
         {
+            string email = HttpContext.Session.GetString("emailAddress");
 
             GameViewModel viewModel = new GameViewModel();
             foreach (var game in viewModel.Games)
@@ -24,19 +26,52 @@ namespace FYP_Project.Controllers
                     viewModel.EditableGame = game;
                 }
             }
-            return View("Index", viewModel);
+            if (email == null)
+            {
+                return View("Index", viewModel);
+            }
+            else
+            {
+                foreach (var player in viewModel.Players)
+                {
+                    if (email == player.emailAddress)
+                    {
+                        viewModel.EditablePlayer = player;
+                    }
+                }
+                return View("Index", viewModel);
+            }
         }
 
         [Route("/RocketLeague/Teams")]
         public IActionResult Teams()
         {
+            string email = HttpContext.Session.GetString("emailAddress");
+
             TeamViewModel viewModel = new TeamViewModel();
-            return View("Teams", viewModel);
+            if (email == null)
+            {
+                return View("Teams", viewModel);
+            }
+            else
+            {
+                foreach (var player in viewModel.Players)
+                {
+                    if (email == player.emailAddress)
+                    {
+                        viewModel.EditablePlayer = player;
+                    }
+                }
+                return View("Teams", viewModel);
+            }
         }
 
         [Route("/RocketLeague/Bracket")]
         public IActionResult Bracket()
         {
+
+            string email = HttpContext.Session.GetString("emailAddress");
+
             ResultsViewModel viewModel = new ResultsViewModel();
             List<Record> TempA = new List<Record>();
             List<Record> TempB = new List<Record>();
@@ -287,12 +322,28 @@ namespace FYP_Project.Controllers
             viewModel.GroupB = TempB.OrderByDescending(team => team.Wins).ToList();
             viewModel.GroupC = TempC.OrderByDescending(team => team.Wins).ToList();
             viewModel.GroupD = TempD.OrderByDescending(team => team.Wins).ToList();
-            return View("Bracket", viewModel);
+            if (email == null)
+            {
+                return View("Bracket", viewModel);
+            }
+            else
+            {
+                foreach (var player in viewModel.Players)
+                {
+                    if (email == player.emailAddress)
+                    {
+                        viewModel.EditablePlayer = player;
+                    }
+                }
+                return View("Bracket", viewModel);
+            }
         }
 
         [Route("/RocketLeague/Team/{name}")]
         public IActionResult Players(string name)
         {
+            string email = HttpContext.Session.GetString("emailAddress");
+
             TeamViewModel viewModel = new TeamViewModel();
             foreach (var Team in viewModel.Teams)
             {
@@ -301,38 +352,116 @@ namespace FYP_Project.Controllers
                     viewModel.EditableTeam = Team;
                 }
             }
-            return View("Players", viewModel);
+            if (email == null)
+            {
+                return View("Players", viewModel);
+            }
+            else
+            {
+                foreach (var player in viewModel.Players)
+                {
+                    if (email == player.emailAddress)
+                    {
+                        viewModel.EditablePlayer = player;
+                    }
+                }
+                return View("Players", viewModel);
+            }
         }
 
         [Route("/RocketLeague/PastResults")]
         public IActionResult PastResults()
         {
+            string email = HttpContext.Session.GetString("emailAddress");
+
             ResultsViewModel viewModel = new ResultsViewModel();
-            return View("PastResults", viewModel);
+            if (email == null)
+            {
+                return View("PastResults", viewModel);
+            }
+            else
+            {
+                foreach (var player in viewModel.Players)
+                {
+                    if (email == player.emailAddress)
+                    {
+                        viewModel.EditablePlayer = player;
+                    }
+                }
+                return View("PastResults", viewModel);
+            }
         }
 
         [Route("/RocketLeague/UpcomingGames")]
         public IActionResult UpcomingGames()
         {
+            string email = HttpContext.Session.GetString("emailAddress");
+
             ResultsViewModel viewModel = new ResultsViewModel();
-            return View("UpcomingGames", viewModel);
+            if (email == null)
+            {
+                return View("UpcomingGames", viewModel);
+            }
+            else
+            {
+                foreach (var player in viewModel.Players)
+                {
+                    if (email == player.emailAddress)
+                    {
+                        viewModel.EditablePlayer = player;
+                    }
+                }
+                return View("UpcomingGames", viewModel);
+            }
         }
 
         [Route("/RocketLeague/Stats")]
         public IActionResult Stats()
         {
+            string email = HttpContext.Session.GetString("emailAddress");
+
             ResultsViewModel viewModel = new ResultsViewModel();
-            return View("Stats", viewModel);
+            if (email == null)
+            {
+                return View("Stats", viewModel);
+            }
+            else
+            {
+                foreach (var player in viewModel.Players)
+                {
+                    if (email == player.emailAddress)
+                    {
+                        viewModel.EditablePlayer = player;
+                    }
+                }
+                return View("Stats", viewModel);
+            }
         }
 
         [Route("/RocketLeague/Player/{name}")]
         public IActionResult PlayerStats(string name)
         {
+            string email = HttpContext.Session.GetString("emailAddress");
+
             TeamViewModel viewModel = new TeamViewModel();
 
             ViewBag.name = name;
 
-            return View("PlayerStats", viewModel);
+            if (email == null)
+            {
+                return View("PlayerStats", viewModel);
+            }
+            else
+            {
+                foreach (var player in viewModel.Players)
+                {
+                    if (email == player.emailAddress)
+                    {
+                        viewModel.EditablePlayer = player;
+                    }
+                }
+                return View("PlayerStats", viewModel);
+            }
         }
     }
 }

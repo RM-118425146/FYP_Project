@@ -11,7 +11,7 @@ namespace FYP_Project.Models
     {
 
         [ExplicitKey]
-        public int ResultID { get; set; }
+        public int? ResultID { get; set; }
 
         public int Team1ID { get; set; }
 

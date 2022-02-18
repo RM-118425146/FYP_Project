@@ -8,6 +8,8 @@
 .card-img-left {
     width: 45%;
     /* Link to your background image using in the property below! */
-    background: scroll center url('https://source.unsplash.com/WEQbe2jBg40/414x512');
-    background-size: cover;
+    background: url('../img/Legion_Collegiate_No_Text.png');
+    background-size: length;
+    background-repeat: no-repeat;
+    background-position: center;
 }

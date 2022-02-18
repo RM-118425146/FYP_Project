@@ -1,0 +1,56 @@
+﻿@{
+    ViewData["Title"] = "Details";
+    string imageURL = "Rocket-League-Emblem.png";
+    string gameName = "tbd";
+    string teamName = "tbd";
+}
+@model FYP_Project.ViewModels.PlayerViewModel
+@foreach (var team in Model.Teams)
+{
+    if (Model.EditablePlayer.TeamID == team.TeamID)
+    {
+        imageURL = team.ImageURL;
+        teamName = team.TeamName;
+        foreach (var game in Model.Games)
+        {
+            if (team.GameID == game.GameID)
+            {
+                gameName = game.GameName;
+            }
+        }
+    }
+}
+
+<!--html profile template found here: https://bbbootstrap.com/snippets/bootstrap-5-profile-card-animation-74461039-->
+<section id="services" class="services section-bg">
+    <div class="container mt-4 mb-4 p-3 d-flex justify-content-center">
+        <div class="card p-4">
+            <div class=" image d-flex flex-column justify-content-center align-items-center">
+                <button class="btn btn-secondary"> <img src="~/img/@imageURL" height="100" width="100" /></button>
+                <span class="name mt-3">@Model.EditablePlayer.PlayerFirstName @Model.EditablePlayer.PlayerLastName</span> <span class="idd">@Model.EditablePlayer.GamerTag</span>
+                <div class="d-flex flex-row justify-content-center align-items-center gap-2">
+                    @foreach (var team in Model.Teams)
+                    {
+                        if (Model.EditablePlayer.TeamID == team.TeamID)
+                        {
+                            <span class="idd1"> @team.TeamName </span>
+                        }
+                    }
+                </div>
+                <div class=" d-flex mt-2">
+                    <div class="btn1 btn-dark"><a href="/LogIn/Edit/@Model.EditablePlayer.PlayerID" style="color: #aeaeae;">Edit Profile</a></div>
+                </div>
+                @if (Model.EditablePlayer.UserType == "Admin")
+                {
+                    <div class=" d-flex mt-2">
+                        <div class="btn1 btn-dark"><a href="/LogIn/Edit/@Model.EditablePlayer.PlayerID" style="color: #aeaeae;">Verify Results</a></div>
+                    </div>
+                }
+                <div class="text mt-3">
+                    <span>@Model.EditablePlayer.PlayerFirstName @Model.EditablePlayer.PlayerLastName is a @gameName player <br><br> They play for @teamName </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <link rel="stylesheet" type="text/css" href="~/css/Profile.css" />
+</section>

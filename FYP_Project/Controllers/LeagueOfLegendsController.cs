@@ -5,6 +5,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using FYP_Project.ViewModels;
 using FYP_Project.Models;
+using Microsoft.AspNetCore.Http;
+
 
 namespace FYP_Project.Controllers
 {
@@ -14,6 +16,8 @@ namespace FYP_Project.Controllers
         [Route("/LeagueOfLegends/Home")]
         public IActionResult Index()
         {
+            string email = HttpContext.Session.GetString("emailAddress");
+
             GameViewModel viewModel = new GameViewModel();
             foreach (var game in viewModel.Games)
             {
@@ -22,14 +26,44 @@ namespace FYP_Project.Controllers
                     viewModel.EditableGame = game;
                 }
             }
-            return View("Index", viewModel);
+            if (email == null)
+            {
+                return View("Index", viewModel);
+            }
+            else
+            {
+                foreach (var player in viewModel.Players)
+                {
+                    if (email == player.emailAddress)
+                    {
+                        viewModel.EditablePlayer = player;
+                    }
+                }
+                return View("Index", viewModel);
+            }
         }
 
         [Route("/LeagueOfLegends/Teams")]
         public IActionResult Teams()
         {
             TeamViewModel viewModel = new TeamViewModel();
-            return View("Teams", viewModel);
+
+            string email = HttpContext.Session.GetString("emailAddress");
+            if (email == null)
+            {
+                return View("Teams", viewModel);
+            }
+            else
+            {
+                foreach (var player in viewModel.Players)
+                {
+                    if (email == player.emailAddress)
+                    {
+                        viewModel.EditablePlayer = player;
+                    }
+                }
+                return View("Teams", viewModel);
+            }
         }
 
         [Route("/LeagueOfLegends/Bracket")]
@@ -285,7 +319,22 @@ namespace FYP_Project.Controllers
             viewModel.GroupB = TempB.OrderByDescending(team => team.Wins).ToList();
             viewModel.GroupC = TempC.OrderByDescending(team => team.Wins).ToList();
             viewModel.GroupD = TempD.OrderByDescending(team => team.Wins).ToList();
-            return View("Bracket", viewModel);
+            string email = HttpContext.Session.GetString("emailAddress");
+            if (email == null)
+            {
+                return View("Bracket", viewModel);
+            }
+            else
+            {
+                foreach (var player in viewModel.Players)
+                {
+                    if (email == player.emailAddress)
+                    {
+                        viewModel.EditablePlayer = player;
+                    }
+                }
+                return View("Bracket", viewModel);
+            }
         }
 
         [Route("{name}")]
@@ -299,7 +348,22 @@ namespace FYP_Project.Controllers
                     viewModel.EditableTeam = Team;
                 }
             }
-            return View("Players", viewModel);
+            string email = HttpContext.Session.GetString("emailAddress");
+            if (email == null)
+            {
+                return View("Players", viewModel);
+            }
+            else
+            {
+                foreach (var player in viewModel.Players)
+                {
+                    if (email == player.emailAddress)
+                    {
+                        viewModel.EditablePlayer = player;
+                    }
+                }
+                return View("Players", viewModel);
+            }
         }
     }
 }

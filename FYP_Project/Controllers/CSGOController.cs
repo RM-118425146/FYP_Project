@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using FYP_Project.ViewModels;
 using FYP_Project.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace FYP_Project.Controllers
 {
@@ -14,6 +15,7 @@ namespace FYP_Project.Controllers
         [Route("/CSGO/Home")]
         public IActionResult Index()
         {
+            string email = HttpContext.Session.GetString("emailAddress");
             GameViewModel viewModel = new GameViewModel();
             foreach (var game in viewModel.Games)
             {
@@ -22,19 +24,52 @@ namespace FYP_Project.Controllers
                     viewModel.EditableGame = game;
                 }
             }
-            return View("Index", viewModel);
+
+            if (email == null)
+            {
+                return View("Index", viewModel);
+            }
+            else
+            {
+                foreach (var player in viewModel.Players)
+                {
+                    if (email == player.emailAddress)
+                    {
+                        viewModel.EditablePlayer = player;
+                    }
+                }
+                return View("Index", viewModel);
+            }
         }
 
         [Route("/CSGO/Teams")]
         public IActionResult Teams()
         {
+            string email = HttpContext.Session.GetString("emailAddress");
+
             TeamViewModel viewModel = new TeamViewModel();
-            return View("Teams", viewModel);
+            if (email == null)
+            {
+                return View("Teams", viewModel);
+            }
+            else
+            {
+                foreach (var player in viewModel.Players)
+                {
+                    if (email == player.emailAddress)
+                    {
+                        viewModel.EditablePlayer = player;
+                    }
+                }
+                return View("Teams", viewModel);
+            }
         }
 
         [Route("/CSGO/Bracket")]
         public IActionResult Bracket()
         {
+            string email = HttpContext.Session.GetString("emailAddress");
+
             ResultsViewModel viewModel = new ResultsViewModel();
             List<Record> TempA = new List<Record>();
             List<Record> TempB = new List<Record>();
@@ -285,12 +320,27 @@ namespace FYP_Project.Controllers
             viewModel.GroupB = TempB.OrderByDescending(team => team.Wins).ToList();
             viewModel.GroupC = TempC.OrderByDescending(team => team.Wins).ToList();
             viewModel.GroupD = TempD.OrderByDescending(team => team.Wins).ToList();
-            return View("Bracket", viewModel);
+            if (email == null)
+            {
+                return View("Bracket", viewModel);
+            }
+            else
+            {
+                foreach (var player in viewModel.Players)
+                {
+                    if (email == player.emailAddress)
+                    {
+                        viewModel.EditablePlayer = player;
+                    }
+                }
+                return View("Bracket", viewModel);
+            }
         }
 
         [Route("{name}")]
         public IActionResult Players(string name)
         {
+            string email = HttpContext.Session.GetString("emailAddress");
             TeamViewModel viewModel = new TeamViewModel();
             foreach (var Team in viewModel.Teams)
             {
@@ -299,7 +349,21 @@ namespace FYP_Project.Controllers
                     viewModel.EditableTeam = Team;
                 }
             }
-            return View("Players", viewModel);
+            if (email == null)
+            {
+                return View("Players", viewModel);
+            }
+            else
+            {
+                foreach (var player in viewModel.Players)
+                {
+                    if (email == player.emailAddress)
+                    {
+                        viewModel.EditablePlayer = player;
+                    }
+                }
+                return View("Players", viewModel);
+            }
         }
     }
 }

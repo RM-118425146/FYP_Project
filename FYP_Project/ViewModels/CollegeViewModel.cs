@@ -30,5 +30,6 @@ namespace FYP_Project.ViewModels
         public List<Result> Results { get; set; }
 
         public College EditableCollege { get; set; }
+        public Player EditablePlayer { get; set; }
     }
 }

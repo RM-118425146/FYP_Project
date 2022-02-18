@@ -28,12 +28,15 @@ namespace FYP_Project.Controllers
 
         public IActionResult CreateUpdate(PlayerViewModel viewModel)
         {
+
+            viewModel.EditablePlayer.password = BC.HashPassword(viewModel.EditablePlayer.password);
+
             using (var db = DbHelper.GetConnection())
             {
                 if (viewModel.EditablePlayer.PlayerID == null)
                 {
                     viewModel.EditablePlayer.PlayerID = viewModel.Players.Count;
-                    viewModel.EditablePlayer.password = BC.HashPassword(viewModel.EditablePlayer.password);
+                    viewModel.EditablePlayer.UserType = "Player";
                     db.Insert<Player>(viewModel.EditablePlayer);
                     HttpContext.Session.SetString("emailAddress", viewModel.EditablePlayer.emailAddress);
                 }
@@ -41,17 +44,17 @@ namespace FYP_Project.Controllers
                 {
                     Player dbItem = db.Get<Player>(viewModel.EditablePlayer.PlayerID);
                     TryUpdateModelAsync<Player>(dbItem, "EditablePlayer");
-                    db.Update<Player>(dbItem);
+                    db.Update<Player>(viewModel.EditablePlayer);
                 }
             }
-            return RedirectToAction("Index","Home");
+            return RedirectToAction("Index", "Home");
         }
 
         public IActionResult LogIn(PlayerViewModel viewModel)
         {
-            foreach(var player in viewModel.Players)
+            foreach (var player in viewModel.Players)
             {
-                if(player.emailAddress == viewModel.EditablePlayer.emailAddress)
+                if (player.emailAddress == viewModel.EditablePlayer.emailAddress)
                 {
                     if (BC.Verify(viewModel.EditablePlayer.password, player.password) == true)
                     {
@@ -65,6 +68,39 @@ namespace FYP_Project.Controllers
                 }
             }
             return View("Index");
+        }
+
+        public IActionResult LogOut(PlayerViewModel viewModel)
+        {
+            HttpContext.Session.Clear();
+            return View("Index");
+        }
+
+        public IActionResult ViewDetails(PlayerViewModel viewModel)
+        {
+            string email = HttpContext.Session.GetString("emailAddress");
+            if (email == null)
+            {
+                return View("Index");
+            }
+            else
+            {
+                foreach (var player in viewModel.Players)
+                {
+                    if (email == player.emailAddress)
+                    {
+                        viewModel.EditablePlayer = player;
+                    }
+                }
+                return View("Details", viewModel);
+            }
+        }
+
+        public IActionResult Edit(int ID)
+        {
+            PlayerViewModel viewModel = new PlayerViewModel();
+            viewModel.EditablePlayer = viewModel.Players.FirstOrDefault(x => x.PlayerID == ID);
+            return View("Edit", viewModel);
         }
     }
 }

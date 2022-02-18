@@ -35,5 +35,6 @@ namespace FYP_Project.ViewModels
         public List<Record> GroupB { get; set; }
         public List<Record> GroupC { get; set; }
         public List<Record> GroupD { get; set; }
+        public Player EditablePlayer { get; set; }
     }
 }

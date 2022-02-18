@@ -37,5 +37,7 @@ namespace FYP_Project.Models
         public string emailAddress { get; set; }
 
         public string password { get; set; }
+
+        public string UserType { get; set; }
     }
 }
