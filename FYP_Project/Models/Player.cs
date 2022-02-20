@@ -39,5 +39,7 @@ namespace FYP_Project.Models
         public string password { get; set; }
 
         public string UserType { get; set; }
+
+        public int Captain { get; set; }
     }
 }

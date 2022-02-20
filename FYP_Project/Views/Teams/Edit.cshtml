@@ -1,0 +1,57 @@
+﻿
+@model FYP_Project.ViewModels.TeamViewModel
+@{
+    ViewData["Title"] = Model.EditableTeam.TeamName;
+    List<String> CollegeNames = new List<String>();
+}
+@foreach(var college in Model.Colleges)
+{
+    CollegeNames.Add(college.CollegeName);
+}
+
+<!-- code for register page found here: https://startbootstrap.com/snippets/registration-page -->
+
+<section id="services" class="services section-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 col-xl-9 mx-auto">
+                <div class="card flex-row my-5 border-0 shadow rounded-3 overflow-hidden">
+                    <div class="card-img-left d-none d-md-flex">
+                        <!-- Background image for card set in CSS! -->
+                    </div>
+                    <div class="card-body p-4 p-sm-5">
+                        <h5 class="card-title text-center mb-5 fw-light fs-5">Edit Team</h5>
+
+                        @using (var form = Html.BeginForm("CreateUpdate", "Teams", FormMethod.Post))
+                        {
+                            @Html.HiddenFor(model => model.EditableTeam.TeamID)
+                            @Html.HiddenFor(model => model.EditableTeam.ImageURL)
+
+                            <div class="form-floating mb-3">
+                                @Html.TextBoxFor(model => model.EditableTeam.TeamName, new { @class = "form-control", placeholder = "Team Name" })
+                                <label for="floatingInputUsername">Team Name</label>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                @Html.DropDownList("TeamGame", new List<SelectListItem> { new SelectListItem { Value = "0", Text = "Rocket League" }, new SelectListItem { Value = "3", Text = "CS:GO" }, new SelectListItem { Value = "1", Text = "Valorant" }, new SelectListItem { Value = "2", Text = "League of Legends" } })
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                @Html.DropDownList("TeamCollege", new SelectList(CollegeNames))
+                            </div>
+
+                            <div class="d-grid mb-2">
+                                <button class="btn btn-lg btn-primary btn-login fw-bold text-uppercase" type="submit">Update</button>
+                            </div>
+
+                            @Html.ValidationSummary()
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <link rel="stylesheet" type="text/css" href="~/css/LogIn.css" />
+
+</section>

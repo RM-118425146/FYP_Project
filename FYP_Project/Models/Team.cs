@@ -10,7 +10,7 @@ namespace FYP_Project.Models
     public class Team
     {
         [ExplicitKey]
-        public int TeamID { get; set; }
+        public int? TeamID { get; set; }
 
         [Required]
         [MinLength(2, ErrorMessage ="Team name must be longer than 2 characters!")]
@@ -19,9 +19,8 @@ namespace FYP_Project.Models
 
         public int GameID { get; set; }
 
-        public int  CollegeID{ get; set; }
+        public int?  CollegeID{ get; set; }
 
-        [Required]
         public string ImageURL { get; set; }
 }
 }

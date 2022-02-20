@@ -37,6 +37,7 @@ namespace FYP_Project.Controllers
                 {
                     viewModel.EditablePlayer.PlayerID = viewModel.Players.Count;
                     viewModel.EditablePlayer.UserType = "Player";
+                    viewModel.EditablePlayer.Captain = 0;
                     db.Insert<Player>(viewModel.EditablePlayer);
                     HttpContext.Session.SetString("emailAddress", viewModel.EditablePlayer.emailAddress);
                 }

@@ -1,0 +1,21 @@
+﻿.btn-get-started {
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: 1px;
+    display: inline-block;
+    padding: 12px 32px;
+    border-radius: 4px;
+    transition: 0.5s;
+    line-height: 1;
+    margin: 10px;
+    color: #000000;
+    -webkit-animation-delay: 0.8s;
+    animation-delay: 0.8s;
+    border: 2px solid #1bbd36;
+}
+    .btn-get-started:hover {
+        background: #1bbd36;
+        color: #FFFFFF;
+        text-decoration: none;
+    }
