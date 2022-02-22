@@ -1,0 +1,65 @@
+﻿@{
+    ViewData["Title"] = "Join Requests";
+    int i = 1;
+}
+@model FYP_Project.ViewModels.JoinRequestViewModel
+
+<section id="services" class="services section-bg">
+    <div class="container" data-aos="fade-up">
+
+        <div class="section-title" data-aos="fade-up">
+            <h2>Requests To Join Team</h2>
+        </div>
+
+        <table id="requestsTable" class="display" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Request #</th>
+                    <th>GamerTag</th>
+                    <th>Response</th>
+                </tr>
+            </thead>
+            <tbody class="requestsTableBody">
+                @foreach (var request in Model.joinRequests)
+                {
+                    if (request.Completed == 0)
+                    {
+                        if (request.TeamID == Model.EditablePlayer.TeamID)
+                        {
+                        <tr>
+                            <td>#@i</td>
+                            @foreach (var player in Model.Players)
+                            {
+                                if (player.PlayerID == request.PlayerID)
+                                {
+                                    <td>
+                                        @player.GamerTag
+                                    </td>
+                                }
+                            }
+                            <td><a href="/Requests/Accept/@request.RequestID" class="btn btn-sm btn-success">Accept</a>     <a href="/Requests/Decline/@request.RequestID" class="btn btn-sm btn-success">Decline</a></td>
+
+                        </tr>
+                        }
+                        i++;
+                    }
+                }
+            </tbody>
+        </table>
+
+    </div>
+
+    <!-- Datatable syling and functionality https://datatables.net/manual/installation -->
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="~/DataTables/datatables.css" />
+
+    <script type="text/javascript" src="~/DataTables/datatables.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#requestsTable').DataTable();
+        });
+    </script>
+
+</section>

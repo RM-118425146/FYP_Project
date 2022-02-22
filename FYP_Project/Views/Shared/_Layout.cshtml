@@ -125,23 +125,40 @@
                             <a href="#"><span>@Model.EditablePlayer.GamerTag</span> <i class="bi bi-chevron-down"></i></a>
                             <ul>
                                 <li class="dropdown">
-                                    <a asp-controller=LogIn asp-action=ViewDetails><span>Account</span> <i class="bi bi-chevron-right"></i></a>
+                                    <a asp-controller=LogIn asp-action=ViewDetails><span>Account</span></a>
                                 </li>
-                                <li class="dropdown">
-                                    <a asp-controller=Results asp-action=Index><span>Submit Result</span> <i class="bi bi-chevron-right"></i></a>
-                                </li>
+                                @if (Model.EditablePlayer.Captain == 1)
+                                {
+                                    <li class="dropdown">
+                                        <a asp-controller=Results asp-action=Index><span>Submit Result</span></a>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a asp-controller=Requests asp-action=Index><span>View Join Requests</span></a>
+                                    </li>
+                                }
                                 @if (Model.EditablePlayer.UserType == "Admin")
                                 {
                                     <li class="dropdown">
-                                        <a asp-controller=Results asp-action=Verify><span>Verify Results</span> <i class="bi bi-chevron-right"></i></a>
+                                        <a asp-controller=Results asp-action=Verify><span>Verify Results</span></a>
+                                    </li>
+                                }
+                                @if (Model.EditablePlayer.TeamID == null)
+                                {
+                                    <li class="dropdown">
+                                        <a asp-controller=Teams asp-action=SelectGame><span>Join Team</span></a>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a asp-controller=Teams asp-action=Edit><span>Create Team</span></a>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li class="dropdown">
+                                        <a asp-controller=Teams asp-action=Index><span>View Team</span></a>
                                     </li>
                                 }
                                 <li class="dropdown">
-                                    <a asp-controller=Teams asp-action=Index><span>View Team</span> <i class="bi bi-chevron-right"></i></a>
-                                </li>
-
-                                <li class="dropdown">
-                                    <a asp-controller=LogIn asp-action=LogOut><span>LogOut</span> <i class="bi bi-chevron-right"></i></a>
+                                    <a asp-controller=LogIn asp-action=LogOut><span>LogOut</span></a>
                                 </li>
                             </ul>
                         </li>

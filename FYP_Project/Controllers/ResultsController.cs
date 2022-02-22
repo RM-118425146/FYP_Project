@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Http;
 
 namespace FYP_Project.Controllers
 {
-    public class Results : Controller
+    public class ResultsController : Controller
     {
         public IActionResult Index()
         {

@@ -2,6 +2,14 @@
 @{
     ViewData["Title"] = Model.EditableTeam.TeamName;
     int i = 0;
+    int? gameID = 0;
+}
+@foreach (var team in Model.Teams)
+{
+    if (team.TeamID == Model.EditablePlayer.TeamID)
+    {
+        gameID = team.TeamID;
+    }
 }
 <link rel="stylesheet" type="text/css" href="~/css/Extras.css" />
 <section id="team" class="team section-bg">
@@ -17,15 +25,38 @@
             {
                 if (player.TeamID == Model.EditableTeam.TeamID)
                 {
+
+
                     <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
                         <div class="member" data-aos="fade-up">
                             <div class="member-img">
-                                <img src="~/img/Rocket-League-Emblem.png" class="img-fluid" alt="">
+                                @switch (gameID)
+                                {
+                                    case (0):
+                                        <img src="~/img/Rocket-League-Emblem.png" class="img-fluid" alt="">
+                                        break;
+                                    case (1):
+                                        <img src="~/img/Val-Logo.png" class="img-fluid" alt="">
+                                        break;
+                                    case (2):
+                                        <img src="~/img/League-of-Legends-Logo.png" class="img-fluid" alt="">
+                                        break;
+                                    case (3):
+                                        <img src="~/img/csgo_logo.png" class="img-fluid" alt="">
+                                        break;
+                                }
                             </div>
                             <div class="member-info">
                                 <h4>@player.GamerTag</h4>
                                 <span>@player.PlayerFirstName @player.PlayerLastName</span>
                             </div>
+                            @if (Model.EditablePlayer.Captain == 1)
+                            {
+                                <div class=" text-center">
+                                    <div class="text-center"><a href="/Teams/Remove/@player.PlayerID" class="btn btn-sm btn-success">Remove Player</a></div>
+                                </div>
+                                <br />
+                            }
                         </div>
                     </div>
                 }
@@ -33,12 +64,12 @@
 
 
         </div>
-    @if (Model.EditablePlayer.Captain == 1)
-    {
-        <div class=" text-center">
-            <div class="text-center"><a asp-controller=Teams asp-action=Edit class="btn-get-started">Edit Team</a></div>
-        </div>
-    }
+        @if (Model.EditablePlayer.Captain == 1)
+        {
+            <div class=" text-center">
+                <div class="text-center"><a asp-controller=Teams asp-action=Edit class="btn-get-started">Edit Team</a></div>
+            </div>
+        }
     </div>
 </section><!-- End Our Team Section -->
 

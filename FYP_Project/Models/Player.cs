@@ -30,7 +30,7 @@ namespace FYP_Project.Models
 
         public int  PlayerTelephone { get; set; }
 
-        public int TeamID { get; set; }
+        public int? TeamID { get; set; }
 
         public string? TwitchName { get; set; }
 

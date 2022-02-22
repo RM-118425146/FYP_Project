@@ -20,6 +20,7 @@ namespace FYP_Project.ViewModels
                 this.Players = db.Query<Player>("Select * FROM Players ORDER BY PlayerID DESC").ToList();
                 this.Games = db.Query<Game>("Select * FROM Games ORDER BY GameID DESC").ToList();
                 this.Results = db.Query<Result>("Select * FROM Results ORDER BY ResultID DESC").ToList();
+                this.joinRequests = db.Query<JoinRequest>("Select * FROM JoinRequests ORDER BY RequestID DESC").ToList();
             }
         }
 
@@ -28,8 +29,11 @@ namespace FYP_Project.ViewModels
         public List<Player> Players { get; set; }
         public List<Game> Games { get; set; }
         public List<Result> Results { get; set; }
+        public List<JoinRequest> joinRequests { get; set; }
 
         public Team EditableTeam { get; set; }
         public Player EditablePlayer { get; set; }
+        public JoinRequest EditableJoinRequest { get; set; }
+        public List<Team> GameTeams { get; set; }
     }
 }

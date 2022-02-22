@@ -22,7 +22,7 @@
                     <div class="card-body p-4 p-sm-5">
                         <h5 class="card-title text-center mb-5 fw-light fs-5">Edit Team</h5>
 
-                        @using (var form = Html.BeginForm("CreateUpdate", "Teams", FormMethod.Post))
+                        @using (var form = Html.BeginForm("CreateUpdate", "Teams", FormMethod.Post, new { @enctype = "multipart/form-data" }))
                         {
                             @Html.HiddenFor(model => model.EditableTeam.TeamID)
                             @Html.HiddenFor(model => model.EditableTeam.ImageURL)
@@ -32,12 +32,20 @@
                                 <label for="floatingInputUsername">Team Name</label>
                             </div>
 
+                            <label for="img">Select Team Game:</label>
                             <div class="form-floating mb-3">
                                 @Html.DropDownList("TeamGame", new List<SelectListItem> { new SelectListItem { Value = "0", Text = "Rocket League" }, new SelectListItem { Value = "3", Text = "CS:GO" }, new SelectListItem { Value = "1", Text = "Valorant" }, new SelectListItem { Value = "2", Text = "League of Legends" } })
                             </div>
 
+                            <label for="img">Select Team College:</label>
                             <div class="form-floating mb-3">
                                 @Html.DropDownList("TeamCollege", new SelectList(CollegeNames))
+                            </div>
+
+                            <label for="img">Upload Team Logo:</label>
+                            <label for="img"><i>Leave this section blank if team already has a logo</i></label>
+                            <div class="form-floating mb-3">
+                                <input type="file" id="img" name="img" accept="image/png">
                             </div>
 
                             <div class="d-grid mb-2">

@@ -40,9 +40,21 @@
                 <div class=" d-flex mt-2">
                     <div class="btn1 btn-dark"><a href="/LogIn/Edit/@Model.EditablePlayer.PlayerID" style="color: #aeaeae;">Edit Profile</a></div>
                 </div>
-                <div class=" d-flex mt-2">
-                    <div class="btn1 btn-dark"><a asp-controller=Teams asp-action=Index style="color: #aeaeae;">View Team</a></div>
-                </div>
+                @if (Model.EditablePlayer.TeamID == null)
+                {
+                    <div class=" d-flex mt-2">
+                        <div class="btn1 btn-dark"><a asp-controller=Teams asp-action=SelectGame style="color: #aeaeae;">Join Team</a></div>
+                    </div>
+                    <div class=" d-flex mt-2">
+                        <div class="btn1 btn-dark"><a asp-controller=Teams asp-action=Edit style="color: #aeaeae;">Create Team</a></div>
+                    </div>
+                }
+                else
+                {
+                    <div class=" d-flex mt-2">
+                        <div class="btn1 btn-dark"><a asp-controller=Teams asp-action=Index style="color: #aeaeae;">View Team</a></div>
+                    </div>
+                }
                 @if (Model.EditablePlayer.UserType == "Admin")
                 {
                     <div class=" d-flex mt-2">
