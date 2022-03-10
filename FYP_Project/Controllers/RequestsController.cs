@@ -54,7 +54,7 @@ namespace FYP_Project.Controllers
             {
                 if (email == player.emailAddress)
                 {
-                    TeamID = viewModel.EditablePlayer.TeamID;
+                    TeamID = player.TeamID;
                 }
             }
 
@@ -69,7 +69,7 @@ namespace FYP_Project.Controllers
                     }
                     foreach(var player in viewModel.Players)
                     {
-                        if(player.PlayerID == request.PlayerID)
+                        if(player.PlayerID == viewModel.EditableJoinRequest.PlayerID)
                         {
                             viewModel.EditablePlayer = player;
                         }

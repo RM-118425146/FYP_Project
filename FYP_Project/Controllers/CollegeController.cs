@@ -6,23 +6,54 @@ using Dapper;
 using Dapper.Contrib.Extensions;
 using FYP_Project.ViewModels;
 using FYP_Project.Helpers;
+using Microsoft.AspNetCore.Http;
 
 namespace FYP_Project.Controllers
 {
-    public class DataDemoController : Controller
+    public class CollegeController : Controller
     {
         public IActionResult Index()
         {
             CollegeViewModel viewModel = new CollegeViewModel();
 
-            return View("index", viewModel);
+            string email = HttpContext.Session.GetString("emailAddress");
+            if (email == null)
+            {
+                return View("Index", viewModel);
+            }
+            else
+            {
+                foreach (var player in viewModel.Players)
+                {
+                    if (email == player.emailAddress)
+                    {
+                        viewModel.EditablePlayer = player;
+                    }
+                }
+                return View("Index", viewModel);
+            }
         }
 
         public IActionResult Edit(int ID)
         {
             CollegeViewModel viewModel = new CollegeViewModel();
             viewModel.EditableCollege = viewModel.Colleges.FirstOrDefault(x => x.CollegeID == ID);
-            return View("Index", viewModel);
+            string email = HttpContext.Session.GetString("emailAddress");
+            if (email == null)
+            {
+                return View("Index", viewModel);
+            }
+            else
+            {
+                foreach (var player in viewModel.Players)
+                {
+                    if (email == player.emailAddress)
+                    {
+                        viewModel.EditablePlayer = player;
+                    }
+                }
+                return View("Index", viewModel);
+            }
         }
 
         public IActionResult Delete(int ID)
@@ -58,7 +89,22 @@ namespace FYP_Project.Controllers
             }
             else
             {
-                return View("Index", new College());
+                string email = HttpContext.Session.GetString("emailAddress");
+                if (email == null)
+                {
+                    return View("Index", viewModel);
+                }
+                else
+                {
+                    foreach (var player in viewModel.Players)
+                    {
+                        if (email == player.emailAddress)
+                        {
+                            viewModel.EditablePlayer = player;
+                        }
+                    }
+                    return View("Index", new College());
+                }
             }
         }
     }

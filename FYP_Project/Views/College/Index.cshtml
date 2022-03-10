@@ -1,15 +1,15 @@
 ﻿@{
-    ViewData["Title"] = "Data Demo";
+    ViewData["Title"] = "Colleges";
 }
 @model FYP_Project.ViewModels.CollegeViewModel
 <section id="colleges">
     <div class="container" data-aos="fade-up">
         <div class="row content">
             <h1>Colleges</h1>
-            <table class="table table-striped table-bordered table-hover" style="max-width: 500px;">
+            <table id="collegeTable" style="width:100%" class="table table-striped table-bordered table-hover">
                 <tr>
                     <td colspan="5">
-                        @using (var form = Html.BeginForm("CreateUpdate", "DataDemo", FormMethod.Post))
+                        @using (var form = Html.BeginForm("CreateUpdate", "College", FormMethod.Post))
                         {
                             @Html.HiddenFor(model => model.EditableCollege.CollegeID)
                             <div class="input-group">
@@ -37,14 +37,15 @@
                             @college.CollegeCounty
                         </td>
                         <td class="text-center">
-                            <a href="/DataDemo/Edit/@college.CollegeID" onclick="return confirm('Are you sure you want to edit this college?');" class="btn btn-sm btn-success">Edit</a>
+                            <a href="/College/Edit/@college.CollegeID" onclick="return confirm('Are you sure you want to edit this college?');" class="btn btn-sm btn-success">Edit</a>
                         </td>
                         <td class="text-center">
-                            <a href="/DataDemo/Delete/@college.CollegeID" onclick="return confirm('Are you sure tou want to delete this college?');" class="btn btn-sm btn-Danger">Delete</a>
+                            <a href="/College/Delete/@college.CollegeID" onclick="return confirm('Are you sure tou want to delete this college?');" class="btn btn-sm btn-Danger">Delete</a>
                         </td>
                     </tr>
                 }
             </table>
-            </div>
         </div>
+    </div>
+
 </section>

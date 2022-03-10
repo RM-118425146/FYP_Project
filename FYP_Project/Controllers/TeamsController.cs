@@ -263,7 +263,7 @@ namespace FYP_Project.Controllers
             string TeamName = Request.Form["Team"].ToString();
             using (var db = DbHelper.GetConnection())
             {
-                if (viewModel.EditablePlayer.TeamID == 101)
+                if (viewModel.EditablePlayer.TeamID == null)
                 {
                     viewModel.EditableJoinRequest.RequestID = viewModel.joinRequests.Count;
                     viewModel.EditableJoinRequest.PlayerID = viewModel.EditablePlayer.PlayerID;
@@ -337,7 +337,36 @@ namespace FYP_Project.Controllers
                         viewModel.EditableTeam = team;
                     }
                 }
-                return View("Index", viewModel);
+                return RedirectToAction("Index", "Home");
+            }
+        }
+
+        public IActionResult Delete(int ID)
+        {
+            TeamViewModel viewModel = new TeamViewModel();
+            using (var db = DbHelper.GetConnection())
+            {
+                Team team = db.Get<Team>(ID);
+                if (team != null)
+                    db.Delete(team);
+
+                foreach(var player in viewModel.Players)
+                {
+                    if(player.TeamID == ID)
+                    {
+                        viewModel.EditablePlayer = player;
+                        viewModel.EditablePlayer.TeamID = null;
+                        if(player.Captain == 1)
+                        {
+                            viewModel.EditablePlayer.Captain = 0;
+                        }
+                        Player dbItem = db.Get<Player>(viewModel.EditablePlayer);
+                        TryUpdateModelAsync<Player>(dbItem, "EditablePlayer");
+                        db.Update<Player>(viewModel.EditablePlayer);
+                    }
+                }
+
+                return RedirectToAction("Index", "Home");
             }
         }
     }

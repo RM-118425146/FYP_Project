@@ -1,81 +1,107 @@
 ﻿@{
-    ViewData["Title"] = "Result";
+    ViewData["Title"] = "Verify Results";
+    int i = 1;
 }
 @model FYP_Project.ViewModels.ResultsViewModel
 
-<section>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-10 col-xl-9 mx-auto">
-                <div class="card flex-row my-5 border-0 shadow rounded-3 overflow-hidden">
-                    <div class="card-img-left d-none d-md-flex">
-                        <!-- Background image for card set in CSS! -->
-                    </div>
-                    <div class="card-body p-4 p-sm-5">
-                        <h5 class="card-title text-center mb-5 fw-light fs-5">Submit Result</h5>
+<section id="services" class="services section-bg">
+    <div class="container" data-aos="fade-up">
 
-                        @using (var form = Html.BeginForm("CreateUpdate", "Results", FormMethod.Post))
-                        {
-                            @Html.HiddenFor(model => model.EditableResult.ResultID)
-
-                            <div class="form-floating mb-3">
-                                @Html.TextBoxFor(model => model.EditableResult.Team1ID, new { @class = "form-control", placeholder = "Team 1" })
-                                <label for="floatingInputUsername">Username</label>
-                            </div>
-
-                            <div class="form-floating mb-3">
-                                @Html.TextBoxFor(model => model.EditablePlayer.PlayerFirstName, new { @class = "form-control", placeholder = "First Name" })
-                                <label for="floatingInputUsername">First Name</label>
-                            </div>
-
-                            <div class="form-floating mb-3">
-                                @Html.TextBoxFor(model => model.EditablePlayer.PlayerLastName, new { @class = "form-control", placeholder = "Last Name" })
-                                <label for="floatingInputUsername">Last Name</label>
-                            </div>
-
-                            <div class="form-floating mb-3">
-                                @Html.TextBoxFor(model => model.EditablePlayer.emailAddress, new { @class = "form-control", placeholder = "Email Address" })
-                                <label for="floatingInputEmail">Email address</label>
-                            </div>
-
-                            <div class="form-floating mb-3">
-                                @Html.TextBoxFor(model => model.EditablePlayer.PlayerTelephone, new { @class = "form-control", placeholder = "Phone Number" })
-                                <label for="floatingPassword">Phone Number</label>
-                            </div>
-
-                            <div class="form-floating mb-3">
-                                @Html.TextBoxFor(model => model.EditablePlayer.PlayerAddress, new { @class = "form-control", placeholder = "Address" })
-                                <label for="floatingPassword">Address</label>
-                            </div>
-
-                            <div class="form-floating mb-3">
-                                @Html.TextBoxFor(model => model.EditablePlayer.TwitchName, new { @class = "form-control", placeholder = "Twitch Username" })
-                                <label for="floatingPassword">Twitch Username</label>
-                            </div>
-
-                            <hr>
-
-                            <div class="form-floating mb-3">
-                                @Html.TextBoxFor(model => model.EditablePlayer.password, new { @class = "form-control", placeholder = "Password", type = "password" })
-                                <label for="floatingPassword">Password</label>
-                            </div>
-
-                            <div class="form-floating mb-3">
-                                <input type="password" class="form-control" id="floatingPasswordConfirm" placeholder="Confirm Password">
-                                <label for="floatingPasswordConfirm">Confirm Password</label>
-                            </div>
-
-                            <div class="d-grid mb-2">
-                                <button class="btn btn-lg btn-primary btn-login fw-bold text-uppercase" type="submit">Update</button>
-                            </div>
-
-                            @Html.ValidationSummary()
-                        }
-                    </div>
-                </div>
-            </div>
+        <div class="section-title" data-aos="fade-up">
+            <h2>Verify Results</h2>
         </div>
+
+        <table id="requestsTable" class="display" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Result #</th>
+                    <th>Game VS</th>
+                    <th>Score</th>
+                    <th>Winning Team</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody class="requestsTableBody">
+                @foreach (var result in Model.Results)
+                {
+                    if (result.Verified == 0)
+                    {
+                        if (result.Team1ID == Model.EditablePlayer.TeamID || result.Team2ID == Model.EditablePlayer.TeamID)
+                        {
+                            <tr>
+                                <td>@i</td>
+                                @if (result.Team1ID == Model.EditablePlayer.PlayerID)
+                                {
+                                    @foreach (var team in Model.Teams)
+                                    {
+                                        if (team.TeamID == result.Team1ID)
+                                        {
+                                            <td>@team.TeamName</td>
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    @foreach (var team in Model.Teams)
+                                    {
+                                        if (team.TeamID == result.Team2ID)
+                                        {
+                                            <td>@team.TeamName</td>
+                                        }
+                                    }
+                                }
+                                @if (result.Completed == 1 && (result.CompletedBy != Model.EditablePlayer.TeamID))
+                                {
+                                    <td>@result.Team1Score - @result.Team2Score</td>
+                                    @foreach (var team in Model.Teams)
+                                    {
+                                        if (team.TeamID == result.WinningTeamID)
+                                        {
+                                            <td>@team.TeamName</td>
+                                        }
+                                    }
+                                    <td><a href="/Results/Accept/@result.ResultID" class="btn btn-sm btn-success">Accept Result</a>  <a href="/Results/Reject/@result.ResultID" class="btn btn-sm btn-success">Reject Result</a></td>
+                                }
+                                else if (result.Completed == 1 && (result.CompletedBy == Model.EditablePlayer.TeamID))
+                                {
+                                    <td>@result.Team1Score - @result.Team2Score</td>
+                                    @foreach (var team in Model.Teams)
+                                    {
+                                        if (team.TeamID == result.WinningTeamID)
+                                        {
+                                            <td>@team.TeamName</td>
+                                        }
+                                    }
+                                    <td>Waiting For Other Team To Verify Result</td>
+                                }
+                                else
+                                {
+                                    <td>TBD</td>
+                                    <td>TBD</td>
+                                    <td><a href="/Results/Submit/@result.ResultID" class="btn btn-sm btn-success">Submit Result</a></td>
+                                }
+
+                            </tr>
+                            i++;
+                        }
+                    }
+                }
+            </tbody>
+        </table>
+
     </div>
 
-    <link rel="stylesheet" type="text/css" href="~/css/LogIn.css" />
+    <!-- Datatable syling and functionality https://datatables.net/manual/installation -->
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="~/DataTables/datatables.css" />
+
+    <script type="text/javascript" src="~/DataTables/datatables.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#requestsTable').DataTable();
+        });
+    </script>
+
 </section>

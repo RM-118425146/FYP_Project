@@ -7,13 +7,13 @@ namespace FYP_Project.Models
 {
     public class Record
     {
-        public int TeamID { get; set; }
+        public int? TeamID { get; set; }
 
         public int Wins { get; set; } 
 
         public int Losses { get; set; }
 
-        public Record(int teamID, int wins, int losses)
+        public Record(int? teamID, int wins, int losses)
         {
             TeamID = teamID;
             Wins = wins;

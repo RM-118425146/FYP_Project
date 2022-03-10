@@ -1,0 +1,106 @@
+﻿@model FYP_Project.ViewModels.ResultsViewModel
+@{
+    ViewData["Title"] = "Create Fixture";
+    List<string> TeamNames = new List<string>();
+    int GameID = 0;
+    foreach (var team in Model.Teams)
+    {
+        if (team.TeamID == Model.EditablePlayer.TeamID)
+        {
+            GameID = team.GameID;
+            ViewBag.GameID = GameID;
+        }
+    }
+    foreach (var team in Model.Teams)
+    {
+        if (team.GameID == GameID)
+        {
+            TeamNames.Add(team.TeamName);
+        }
+    }
+    TeamNames = TeamNames.OrderBy(team => team).ToList();
+}
+<!-- code for register page found here: https://startbootstrap.com/snippets/registration-page -->
+
+
+<section id="services" class="services section-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 col-xl-9 mx-auto">
+                <div class="card flex-row my-5 border-0 shadow rounded-3 overflow-hidden">
+                    <div class="card-img-left d-none d-md-flex">
+                        <!-- Background image for card set in CSS! -->
+                    </div>
+                    <div class="card-body p-4 p-sm-5">
+                        <h5 class="card-title text-center mb-5 fw-light fs-5">Create Fixture</h5>
+
+                        @using (var form = Html.BeginForm("Create", "Results", FormMethod.Post))
+                        {
+                            @Html.HiddenFor(model => model.EditableResult.ResultID)
+                            @Html.HiddenFor(model => model.EditableResult.Team1ID)
+                            @Html.HiddenFor(model => model.EditableResult.Team2ID)
+                            @Html.HiddenFor(model => model.EditableResult.WinningTeamID)
+                            @Html.HiddenFor(model => model.EditableResult.LosingTeamID)
+                            @Html.HiddenFor(model => model.EditableResult.GameID)
+                            @Html.HiddenFor(model => model.EditableResult.CompletedBy)
+
+                            <div class="form-floating mb-3">
+                                @Html.DropDownList("Team1Name", new SelectList(TeamNames), new { @class = "form-control", placeholder = "Home Team" })
+                                <label for="floatingInputUsername">Home Team</label>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                @Html.DropDownList("Team2Name", new SelectList(TeamNames), new { @class = "form-control", placeholder = "Home Team" })
+                                <label for="floatingInputUsername">Away Team</label>
+                            </div>
+
+                            <label for="floatingInputUsername">Group:</label>
+                            <div class="form-floating mb-3">
+                                @Html.DropDownList("Group", new List<SelectListItem> { new SelectListItem { Value = "1", Text = "Group A" }, new SelectListItem { Value = "2", Text = "Group B" }, new SelectListItem { Value = "3", Text = "Group C" }, new SelectListItem { Value = "4", Text = "Group D" } })
+                            </div>
+
+                            <label for="floatingInputUsername">Playoffs:</label>
+                            <div class="form-floating mb-3">
+                                @Html.DropDownList("Playoff", new List<SelectListItem> { new SelectListItem { Value = "0", Text = "True" }, new SelectListItem { Value = "1", Text = "False" } })
+                            </div>
+
+                            <label for="floatingInputUsername">Match Date</label>
+                            <div class="form-floating mb-3">
+                                @Html.EditorFor(model => model.EditableResult.MatchDate, new { @class = "form-control", placeholder = "Match Date", Value = System.DateTime.Today })
+                            </div>
+
+                            <hr>
+
+                            <label for="floatingInputUsername">Twitch Username</label>
+                            <div class="form-floating mb-3">
+                                @Html.EditorFor(model => model.EditableResult.TwitchURL, new { @class = "form-control", placeholder = "Twitch Username" })
+                            </div>
+
+                            @if (GameID == 0)
+                            {
+                                <label for="floatingInputUsername">Ballchasing.com Link</label>
+                                <div class="form-floating mb-3">
+                                    @Html.EditorFor(model => model.EditableResult.BallchasingLink, new { @class = "form-control", placeholder = "Ballchasing.com Link" })
+                                </div>
+                            }
+                            else
+                            {
+                                @Html.HiddenFor(model => model.EditableResult.BallchasingLink)
+                            }
+
+                            <div class="d-grid mb-2">
+                                <button class="btn btn-lg btn-primary btn-login fw-bold text-uppercase" type="submit">Create Fixture</button>
+                            </div>
+
+                            @Html.ValidationSummary()
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <link rel="stylesheet" type="text/css" href="~/css/LogIn.css" />
+
+</section>
+

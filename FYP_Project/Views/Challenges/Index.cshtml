@@ -1,0 +1,143 @@
+﻿@{
+    ViewData["Title"] = "Challenges";
+    int i = 1;
+    int j = 1;
+}
+@model FYP_Project.ViewModels.ChallengeViewModel
+
+<section id="services" class="services section-bg">
+    <div class="container" data-aos="fade-up">
+
+        <div class="section-title" data-aos="fade-up">
+            <h2>Challenges From Rival Teams</h2>
+        </div>
+
+        <div class=" text-center">
+            <div class="text-center"><a asp-controller=Challenges asp-action=Challenges class="btn-get-started">Challenge Rival</a></div>
+        </div>
+
+        <table id="ChallengesRecievedTable" class="display" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Challenge #</th>
+                    <th>Challenge Type</th>
+                    <th>From</th>
+                    <th>Complete By</th>
+                    <th>Response</th>
+                </tr>
+            </thead>
+            <tbody class="requestsTableBody">
+                @foreach (var challenge in Model.Challenges)
+                {
+                    if (challenge.TeamID == Model.EditablePlayer.TeamID)
+                    {
+                <tr>
+                    <td>#@i</td>
+                    <td>@challenge.ChallengeType</td>
+                    @foreach (var team in Model.Teams)
+                    {
+                        if (team.TeamID == challenge.ChallengerTeamID)
+                        {
+                            <td>@team.TeamName</td>
+                        }
+                    }
+                    <td>@challenge.CompleteBy.Day/@challenge.CompleteBy.Month/@challenge.CompleteBy.Year</td>
+                    @if (challenge.Accepted == 0)
+                    {
+                        <td><a href="/Challenges/Accept/@challenge.ChallengeID" class="btn btn-sm btn-success">Accept</a>     <a href="/Challenges/Decline/@challenge.ChallengeID" class="btn btn-sm btn-success">Decline</a></td>
+                    }
+                    else if (challenge.Accepted == 1)
+                    {
+                        <td>Challenge in Progress</td>
+                    }
+                    else
+                    {
+                        <td>Challenge Declined</td>
+                    }
+                </tr>
+                        i++;
+                    }
+                }
+
+            </tbody>
+        </table>
+
+    </div>
+
+    <!-- Datatable syling and functionality https://datatables.net/manual/installation -->
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="~/DataTables/datatables.css" />
+
+    <script type="text/javascript" src="~/DataTables/datatables.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#ChallengesRecievedTable').DataTable();
+        });
+    </script>
+
+</section>
+
+<section id="services" class="services section-bg">
+    <div class="container" data-aos="fade-up">
+
+        <div class="section-title" data-aos="fade-up">
+            <h2>Challenges Sent to Rival Teams</h2>
+        </div>
+
+        <table id="ChallengesSentTable" class="display" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Challenge #</th>
+                    <th>Challenge Type</th>
+                    <th>Sent To</th>
+                    <th>Complete By</th>
+                    <th>Response</th>
+                </tr>
+            </thead>
+            <tbody class="requestsTableBody">
+                @foreach (var challenge in Model.Challenges)
+                {
+                    if (challenge.ChallengerTeamID == Model.EditablePlayer.TeamID)
+                    {
+                <tr>
+                    <td>#@j</td>
+                    <td>@challenge.ChallengeType</td>
+                    @foreach (var team in Model.Teams)
+                    {
+                        if (team.TeamID == challenge.TeamID)
+                        {
+                            <td>@team.TeamName</td>
+                        }
+                    }
+                    <td>@challenge.CompleteBy.Day/@challenge.CompleteBy.Month/@challenge.CompleteBy.Year</td>
+                    @if (challenge.Accepted == 0)
+                    {
+                        <td>Waiting For Response</td>
+                    }
+                    else if (challenge.Accepted == 1)
+                    {
+                        <td>Challenge Accepted</td>
+                    }
+                    else
+                    {
+                        <td>Challenge Declined</td>
+                    }
+                </tr>
+                        j++;
+                    }
+                }
+
+            </tbody>
+        </table>
+
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $('#ChallengesSentTable').DataTable();
+        });
+    </script>
+
+</section>

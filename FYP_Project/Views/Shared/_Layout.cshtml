@@ -80,9 +80,8 @@
                                 <ul>
                                     <li><a asp-controller=CSGO asp-action=Bracket>Bracket</a></li>
                                     <li><a asp-controller=CSGO asp-action=Teams>Teams</a></li>
-                                    <li><a href="#">Upcoming Games</a></li>
-                                    <li><a href="#">Past Results</a></li>
-                                    <li><a href="#">Stats</a></li>
+                                    <li><a asp-controller=CSGO asp-action=UpcomingGames>Upcoming Games</a></li>
+                                    <li><a asp-controller=CSGO asp-action=PastResults>Past Results</a></li>
                                 </ul>
                             </li>
                             <li class="dropdown">
@@ -90,9 +89,8 @@
                                 <ul>
                                     <li><a asp-controller=LeagueofLegends asp-action=Bracket>Bracket</a></li>
                                     <li><a asp-controller=LeagueOfLegends asp-action=Teams>Teams</a></li>
-                                    <li><a href="#">Upcoming Games</a></li>
-                                    <li><a href="#">Past Results</a></li>
-                                    <li><a href="#">Stats</a></li>
+                                    <li><a asp-controller=LeagueOfLegends asp-action=UpcomingGames>Upcoming Games</a></li>
+                                    <li><a asp-controller=LeagueOfLegends asp-action=PastResults>Past Results</a></li>
                                 </ul>
                             </li>
                             <li class="dropdown">
@@ -100,9 +98,8 @@
                                 <ul>
                                     <li><a asp-controller=Valorant asp-action=Bracket>Bracket</a></li>
                                     <li><a asp-controller=Valorant asp-action=Teams>Teams</a></li>
-                                    <li><a href="#">Upcoming Games</a></li>
-                                    <li><a href="#">Past Results</a></li>
-                                    <li><a href="#">Stats</a></li>
+                                    <li><a asp-controller=Valorant asp-action=UpcomingGames>Upcoming Games</a></li>
+                                    <li><a asp-controller=Valorant asp-action=PastResults>Past Results</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -130,16 +127,22 @@
                                 @if (Model.EditablePlayer.Captain == 1)
                                 {
                                     <li class="dropdown">
-                                        <a asp-controller=Results asp-action=Index><span>Submit Result</span></a>
+                                        <a asp-controller=Results asp-action=Index><span>Verify Results</span></a>
                                     </li>
                                     <li class="dropdown">
                                         <a asp-controller=Requests asp-action=Index><span>View Join Requests</span></a>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a asp-controller=Challenges asp-action=Index><span>View Challenges</span></a>
                                     </li>
                                 }
                                 @if (Model.EditablePlayer.UserType == "Admin")
                                 {
                                     <li class="dropdown">
-                                        <a asp-controller=Results asp-action=Verify><span>Verify Results</span></a>
+                                        <a asp-controller=Results asp-action=CreateFixture><span>Create Fixture</span></a>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a asp-controller=College asp-action=Index><span>View Colleges</span></a>
                                     </li>
                                 }
                                 @if (Model.EditablePlayer.TeamID == null)
@@ -155,6 +158,9 @@
                                 {
                                     <li class="dropdown">
                                         <a asp-controller=Teams asp-action=Index><span>View Team</span></a>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a href="/Teams/Remove/@Model.EditablePlayer.PlayerID"><span>Leave Team</span></a>
                                     </li>
                                 }
                                 <li class="dropdown">

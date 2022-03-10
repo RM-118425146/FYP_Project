@@ -69,9 +69,229 @@
             <div class=" text-center">
                 <div class="text-center"><a asp-controller=Teams asp-action=Edit class="btn-get-started">Edit Team</a></div>
             </div>
+            <div class=" text-center">
+                <div class="text-center"><a href="/Teams/Delete/@Model.EditablePlayer.TeamID" onclick="return confirm('Are you sure tou want to delete this college?');" class="btn-get-started">Delete Team</a></div>
+            </div>
         }
     </div>
 </section><!-- End Our Team Section -->
+
+<section id="services" class="services section-bg" style="min-height:auto">
+    <div class="container" style="position:relative">
+
+        <div class="section-title" data-aos="fade-up">
+            <h2>@Model.EditableTeam.TeamName Fixtures</h2>
+        </div>
+
+        <section id="portfolio" class="portfolio">
+            <div class="row" data-aos="fade-up">
+                <div class="col-lg-12 d-flex justify-content-center">
+                    <ul id="portfolio-flters">
+                        <li data-filter=".filter-app" onclick="pastResults()" href="#Past">Past Results</li>
+                        <li data-filter=".filter-card" onclick="ongoingResults()" href="#Ongoing">Ongoing Games</li>
+                        <li data-filter=".filter-web" onclick="futureResults()" href="#Future">Upcoming Fixtures</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="row" style="visibility: visible; z-index: 0; position: absolute; max-height: 500px; overflow-y: auto;" id="Past">
+
+            @foreach (var result in Model.Results)
+            {
+                if (result.Team1ID == Model.EditablePlayer.TeamID || result.Team2ID == Model.EditablePlayer.TeamID)
+                {
+                    if (result.GameID == 0)
+                    {
+                        if (result.MatchDate < System.DateTime.Now)
+                        {
+                            if (result.Verified == 1)
+                            {
+                            <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+                                <div class="icon-box iconbox-blue">
+                                    <div class="icon">
+                                        @foreach (var team in Model.Teams)
+                                        {
+                                            if (team.TeamID == result.Team1ID)
+                                            {
+                                                if (team.ImageURL == null)
+                                                {
+                                                    team.ImageURL = "Rocket-League-Emblem.png";
+                                                }
+                                                <img src="~/img/@team.ImageURL" style="width:80px;height:auto;" />
+                                            }
+                                        }
+                                        <h4> VS </h4>
+                                        @foreach (var team in Model.Teams)
+                                        {
+                                            if (team.TeamID == result.Team2ID)
+                                            {
+                                                if (team.ImageURL == null)
+                                                {
+                                                    team.ImageURL = "Rocket-League-Emblem.png";
+                                                }
+                                                <img src="~/img/@team.ImageURL" style="width:80px;height:auto;" />
+                                            }
+                                        }
+                                    </div>
+                                    @foreach (var team in Model.Teams)
+                                    {
+                                        if (team.TeamID == result.Team1ID)
+                                        {
+                                            <h4><a href="/RocketLeague/Team/@team.TeamName">@team.TeamName</a></h4>
+                                        }
+                                    }
+                                    <h4>@result.Team1Score - @result.Team2Score</h4>
+                                    @foreach (var team in Model.Teams)
+                                    {
+                                        if (team.TeamID == result.Team2ID)
+                                        {
+                                            <h4><a href="/RocketLeague/Team/@team.TeamName">@team.TeamName</a></h4>
+                                        }
+                                    }
+                                    <p>@result.MatchDate.Day/@result.MatchDate.Month/@result.MatchDate.Year</p>
+                                </div>
+                            </div>
+                            }
+                        }
+                    }
+                }
+            }
+
+        </div>
+
+        <div class="row" style="visibility: hidden; z-index: 1; position: relative; max-height: 500px; overflow-y: auto; " id="Ongoing">
+
+            @foreach (var result in Model.Results)
+            {
+                if (result.Team1ID == Model.EditablePlayer.TeamID || result.Team2ID == Model.EditablePlayer.TeamID)
+                {
+                    if (result.MatchDate < System.DateTime.Now)
+                    {
+                        if (result.GameID == 0)
+                        {
+                            if (result.Verified == 0)
+                            {
+                            <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+                                <div class="icon-box iconbox-blue">
+                                    <div class="icon">
+                                        @foreach (var team in Model.Teams)
+                                        {
+                                            if (team.TeamID == result.Team1ID)
+                                            {
+                                                if (team.ImageURL == null)
+                                                {
+                                                    team.ImageURL = "Rocket-League-Emblem.png";
+                                                }
+                                                <img src="~/img/@team.ImageURL" style="width:80px;height:auto;" />
+                                            }
+                                        }
+                                        <h4> VS </h4>
+                                        @foreach (var team in Model.Teams)
+                                        {
+                                            if (team.TeamID == result.Team2ID)
+                                            {
+                                                if (team.ImageURL == null)
+                                                {
+                                                    team.ImageURL = "Rocket-League-Emblem.png";
+                                                }
+                                                <img src="~/img/@team.ImageURL" style="width:80px;height:auto;" />
+                                            }
+                                        }
+                                    </div>
+                                    @foreach (var team in Model.Teams)
+                                    {
+                                        if (team.TeamID == result.Team1ID)
+                                        {
+                                            <h4><a href="/RocketLeague/Team/@team.TeamName">@team.TeamName</a></h4>
+                                        }
+                                    }
+                                    <h4>VS</h4>
+                                    @foreach (var team in Model.Teams)
+                                    {
+                                        if (team.TeamID == result.Team2ID)
+                                        {
+                                            <h4><a href="/RocketLeague/Team/@team.TeamName">@team.TeamName</a></h4>
+                                        }
+                                    }
+                                    <p>@result.MatchDate.Day/@result.MatchDate.Month/@result.MatchDate.Year</p>
+                                </div>
+                            </div>
+                            }
+                        }
+                    }
+                }
+            }
+
+        </div>
+
+        <div class="row" style="visibility: hidden; z-index: 2; position: relative; max-height: 500px; overflow-y: auto;" id="Future">
+
+            @foreach (var result in Model.Results)
+            {
+                if (result.Team1ID == Model.EditablePlayer.TeamID || result.Team2ID == Model.EditablePlayer.TeamID)
+                {
+                    if (result.MatchDate > System.DateTime.Now)
+                    {
+                        if (result.GameID == 0)
+                        {
+                            if (result.Verified == 0)
+                            {
+                            <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+                                <div class="icon-box iconbox-blue">
+                                    <div class="icon">
+                                        @foreach (var team in Model.Teams)
+                                        {
+                                            if (team.TeamID == result.Team1ID)
+                                            {
+                                                if (team.ImageURL == null)
+                                                {
+                                                    team.ImageURL = "Rocket-League-Emblem.png";
+                                                }
+                                                <img src="~/img/@team.ImageURL" style="width:80px;height:auto;" />
+                                            }
+                                        }
+                                        <h4> VS </h4>
+                                        @foreach (var team in Model.Teams)
+                                        {
+                                            if (team.TeamID == result.Team2ID)
+                                            {
+                                                if (team.ImageURL == null)
+                                                {
+                                                    team.ImageURL = "Rocket-League-Emblem.png";
+                                                }
+                                                <img src="~/img/@team.ImageURL" style="width:80px;height:auto;" />
+                                            }
+                                        }
+                                    </div>
+                                    @foreach (var team in Model.Teams)
+                                    {
+                                        if (team.TeamID == result.Team1ID)
+                                        {
+                                            <h4><a href="/RocketLeague/Team/@team.TeamName">@team.TeamName</a></h4>
+                                        }
+                                    }
+                                    <h4>VS</h4>
+                                    @foreach (var team in Model.Teams)
+                                    {
+                                        if (team.TeamID == result.Team2ID)
+                                        {
+                                            <h4><a href="/RocketLeague/Team/@team.TeamName">@team.TeamName</a></h4>
+                                        }
+                                    }
+                                    <p>@result.MatchDate.Day/@result.MatchDate.Month/@result.MatchDate.Year</p>
+                                </div>
+                            </div>
+                            }
+                        }
+                    }
+                }
+            }
+
+        </div>
+
+    </div>
+</section>
 
 <section id="team" class="team section-bg">
     <div class="container">
@@ -127,3 +347,21 @@
 
     </div>
 </section>
+
+<script>
+    function pastResults() {
+        document.getElementById('Past').style.visibility = 'visible';
+        document.getElementById('Ongoing').style.visibility = 'hidden';
+        document.getElementById('Future').style.visibility = 'hidden';
+    }
+    function ongoingResults() {
+        document.getElementById('Past').style.visibility = 'hidden';
+        document.getElementById('Ongoing').style.visibility = 'visible';
+        document.getElementById('Future').style.visibility = 'hidden';
+    }
+    function futureResults() {
+        document.getElementById('Past').style.visibility = 'hidden';
+        document.getElementById('Ongoing').style.visibility = 'hidden';
+        document.getElementById('Future').style.visibility = 'visible';
+    }
+</script>

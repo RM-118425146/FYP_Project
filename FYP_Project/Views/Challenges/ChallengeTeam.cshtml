@@ -1,0 +1,95 @@
+﻿@model FYP_Project.ViewModels.ChallengeViewModel
+@{
+    ViewData["Title"] = "Create Challenge";
+    List<string> TeamNames = new List<string>();
+    List<int> Count = new List<int>();
+    for(int i = 1; i <= 9; i++)
+    {
+        Count.Add(i);
+    }
+    int GameID = 0;
+    foreach (var team in Model.Teams)
+    {
+        if (team.TeamID == Model.EditablePlayer.TeamID)
+        {
+            GameID = team.GameID;
+            ViewBag.GameID = GameID;
+        }
+    }
+    foreach (var team in Model.Teams)
+    {
+        if (team.GameID == GameID)
+        {
+            TeamNames.Add(team.TeamName);
+        }
+    }
+    TeamNames = TeamNames.OrderBy(team => team).ToList();
+}
+<!-- code for register page found here: https://startbootstrap.com/snippets/registration-page -->
+
+<section id="services" class="services section-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 col-xl-9 mx-auto">
+                <div class="card flex-row my-5 border-0 shadow rounded-3 overflow-hidden">
+                    <div class="card-img-left d-none d-md-flex">
+                        <!-- Background image for card set in CSS! -->
+                    </div>
+                    <div class="card-body p-4 p-sm-5">
+                        <h5 class="card-title text-center mb-5 fw-light fs-5">Create Challenge</h5>
+
+                        @using (var form = Html.BeginForm("Create", "Challenges", FormMethod.Post))
+                        {
+                            @Html.HiddenFor(model => model.EditableChallenge.ChallengeID)
+                            @Html.HiddenFor(model => model.EditableChallenge.TeamID)
+                            @Html.HiddenFor(model => model.EditableChallenge.ChallengerTeamID)
+                            @Html.HiddenFor(model => model.EditableChallenge.ChallengeDate)
+                            @Html.HiddenFor(model => model.EditableChallenge.Accepted)
+                            @Html.HiddenFor(model => model.EditableChallenge.ChallengeType)
+
+
+                            <div class="form-floating mb-3">
+                                @Html.DropDownList("TeamName", new SelectList(TeamNames), new { @class = "form-control", placeholder = "Team to Challenge" })
+                                <label for="floatingInputUsername">Team to Challenge</label>
+                            </div>
+
+                            @if (GameID == 0)
+                            {
+                                <div class="form-floating mb-3">
+                                    @Html.DropDownList("ChallengeType", new List<SelectListItem> { new SelectListItem { Value = "Score x Goals", Text = "Score x Goals" }, new SelectListItem { Value = "Assist x Goals", Text = "Assist x Goals" }, new SelectListItem { Value = "Save x Goals", Text = "Save x Goals" }, new SelectListItem { Value = "Demo x Players", Text = "Demo x Players" } }, new { @class = "form-control", placeholder = "Challenge Type" })
+                                    <label for="floatingInputUsername">Challenge Type</label>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="form-floating mb-3">
+                                    @Html.DropDownList("ChallengeType", new List<SelectListItem> { new SelectListItem { Value = "Kill x Players", Text = "kill x Players" }, new SelectListItem { Value = "Assist x Kills", Text = "Assist x Kills" }, new SelectListItem { Value = "Win x Matches", Text = "Win x Matches" }}, new { @class = "form-control", placeholder = "Challenge Type" })
+                                    <label for="floatingInputUsername">Challenge Type</label>
+                                </div>
+                            }
+                            <div class="form-floating mb-3">
+                                @Html.DropDownList("Amount", new SelectList(Count), new { @class = "form-control", placeholder = "Amount for Selected Challenge:" })
+                                <label for="floatingInputUsername">Amount for Selected Challenge:</label>
+                            </div>
+
+                            <label for="floatingInputUsername">Complete By:</label>
+                            <div class="form-floating mb-3">
+                                @Html.EditorFor(model => model.EditableChallenge.CompleteBy, new { @class = "form-control", placeholder = "Match Date", Value = System.DateTime.Today })
+                            </div>
+
+                            <div class="d-grid mb-2">
+                                <button class="btn btn-lg btn-primary btn-login fw-bold text-uppercase" type="submit">Create Challenge</button>
+                            </div>
+
+                            @Html.ValidationSummary()
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <link rel="stylesheet" type="text/css" href="~/css/LogIn.css" />
+
+</section>
+

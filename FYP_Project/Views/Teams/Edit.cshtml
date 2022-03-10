@@ -1,7 +1,7 @@
 ﻿
 @model FYP_Project.ViewModels.TeamViewModel
 @{
-    ViewData["Title"] = Model.EditableTeam.TeamName;
+    ViewData["Title"] = "Create Team";
     List<String> CollegeNames = new List<String>();
 }
 @foreach(var college in Model.Colleges)
@@ -20,7 +20,15 @@
                         <!-- Background image for card set in CSS! -->
                     </div>
                     <div class="card-body p-4 p-sm-5">
-                        <h5 class="card-title text-center mb-5 fw-light fs-5">Edit Team</h5>
+                        @if (Model.EditablePlayer.TeamID == null)
+                        {
+                            <h5 class="card-title text-center mb-5 fw-light fs-5">Create Team</h5>
+                        }
+                        else
+                        {
+                            <h5 class="card-title text-center mb-5 fw-light fs-5">Edit Team</h5>
+                        }
+
 
                         @using (var form = Html.BeginForm("CreateUpdate", "Teams", FormMethod.Post, new { @enctype = "multipart/form-data" }))
                         {
