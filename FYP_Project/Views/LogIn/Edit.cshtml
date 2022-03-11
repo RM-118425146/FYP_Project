@@ -17,6 +17,10 @@
                         @using (var form = Html.BeginForm("CreateUpdate", "LogIn", FormMethod.Post))
                         {
                             @Html.HiddenFor(model => model.EditablePlayer.PlayerID)
+                            @Html.HiddenFor(model => model.EditablePlayer.Captain)
+                            @Html.HiddenFor(model => model.EditablePlayer.UserType)
+                            @Html.HiddenFor(model => model.EditablePlayer.TeamID)
+
 
                             <div class="form-floating mb-3">
                                 @Html.TextBoxFor(model => model.EditablePlayer.GamerTag, new { @class = "form-control", placeholder = "Username" })

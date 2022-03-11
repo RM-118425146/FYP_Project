@@ -142,15 +142,14 @@ namespace FYP_Project.Controllers
                             viewModel.EditableTeam.CollegeID = college.CollegeID;
                         }
                     }
-                    if (Request.Form.Files["img"].FileName != "")
+                    foreach(var team in viewModel.Teams)
                     {
-                        string fileName = Request.Form.Files["img"].FileName;
-                        fileName = Path.GetFileName(fileName);
-                        string uploadPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\img", fileName);
-                        var stream = new FileStream(uploadPath, FileMode.Create);
-                        Request.Form.Files["img"].CopyToAsync(stream);
-                        viewModel.EditableTeam.ImageURL = fileName; ;
+                        if(team.TeamID == viewModel.EditablePlayer.TeamID)
+                        {
+                            viewModel.EditableTeam.ImageURL = team.ImageURL;
+                        }
                     }
+                    
                     Team dbItem = db.Get<Team>(viewModel.EditableTeam.TeamID);
                     TryUpdateModelAsync<Team>(dbItem, "EditableTeam");
                     db.Update<Team>(viewModel.EditableTeam);
@@ -346,25 +345,25 @@ namespace FYP_Project.Controllers
             TeamViewModel viewModel = new TeamViewModel();
             using (var db = DbHelper.GetConnection())
             {
-                Team team = db.Get<Team>(ID);
-                if (team != null)
-                    db.Delete(team);
-
-                foreach(var player in viewModel.Players)
+                foreach (var player in viewModel.Players)
                 {
-                    if(player.TeamID == ID)
+                    if (player.TeamID == ID)
                     {
                         viewModel.EditablePlayer = player;
                         viewModel.EditablePlayer.TeamID = null;
-                        if(player.Captain == 1)
+                        if (player.Captain == 1)
                         {
                             viewModel.EditablePlayer.Captain = 0;
                         }
-                        Player dbItem = db.Get<Player>(viewModel.EditablePlayer);
+                        Player dbItem = db.Get<Player>(viewModel.EditablePlayer.PlayerID);
                         TryUpdateModelAsync<Player>(dbItem, "EditablePlayer");
                         db.Update<Player>(viewModel.EditablePlayer);
                     }
                 }
+
+                Team team = db.Get<Team>(ID);
+                if (team != null)
+                    db.Delete(team);
 
                 return RedirectToAction("Index", "Home");
             }
